@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="throunhugbunadar.hotelbokanir.vidmot.BokunController" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+         <children>
+            <Label text="Nafn hótels" />
+            <Label text="Stjörnur" />
+            <Button mnemonicParsing="false" text="Bóka" />
+         </children>
+      </HBox>
+      <Label text="Lýsing" />
+      <Label text="Myndir" />
+      <Label text="Reviews" />
+      <ListView prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</VBox>

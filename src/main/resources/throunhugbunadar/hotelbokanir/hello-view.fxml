@@ -9,9 +9,18 @@
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
    <children>
-      <Label text="Plese enter name of hotel">
+      <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0" spacing="53.0">
+         <children>
+            <Button fx:id="fxSignIn" mnemonicParsing="false" onAction="#fxOpenSignIn" text="Sign-in" />
+            <Label fx:id="fxNameLabel" text="Guest" />
+         </children>
          <VBox.margin>
-            <Insets right="65.0" />
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <Label text="Plese enter name of a hotel">
+         <VBox.margin>
+            <Insets right="55.0" />
          </VBox.margin>
       </Label>
       <TextField fx:id="fxNameOfhotel" onAction="#onSearch" />
@@ -23,7 +32,7 @@
             <CheckBox fx:id="fxBar" mnemonicParsing="false" text="Bar" />
          </children>
       </HBox>
-      <Label text="Error Lable" />
+      <Label fx:id="fxErrorLabel" />
       <Label text="Check-in" />
       <DatePicker fx:id="fxCheckIn" />
       <Label text="Check-out" />

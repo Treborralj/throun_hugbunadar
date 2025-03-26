@@ -25,14 +25,4 @@ public class GagnasafnsTenging {
         }
         return null;
     }
-
-
-    public static void main(String[] args) throws SQLException {
-        Connection conn = connect();
-        if (conn == null) {
-            System.out.println("Gagnasafns tenging TÓKST EKKI.");
-        } else {
-            System.out.println("Gagnasafns tenging TÓKST");
-        }
-    }
 }

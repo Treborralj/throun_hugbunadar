@@ -13,9 +13,9 @@
       <Label text="Síur:" />
       <HBox prefHeight="46.0" prefWidth="200.0">
          <children>
-            <CheckBox mnemonicParsing="false" text="Bar" />
-            <CheckBox mnemonicParsing="false" text="Spa" />
-            <CheckBox mnemonicParsing="false" text="Bílastæði" />
+            <CheckBox fx:id="fxPool" mnemonicParsing="false" text="Pool" />
+            <CheckBox fx:id="fxGym" mnemonicParsing="false" text="Gym" />
+            <CheckBox fx:id="fxBar" mnemonicParsing="false" text="Bar" />
          </children>
       </HBox>
       <Label text="Check-in" />

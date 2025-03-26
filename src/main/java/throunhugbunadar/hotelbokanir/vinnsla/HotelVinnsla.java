@@ -16,7 +16,7 @@ import java.util.List;
  *
  *****************************************************************************/
 public class HotelVinnsla {
-    public static List<Hotel> finnaLausHotel(String checkIn, String checkOut){
+    public static List<Hotel> finnaLausHotel(String checkIn, String checkOut, boolean pool, boolean gym, boolean bar){
         List<Hotel> lausHotel = new ArrayList<>();
 
         String sqlSkipun = """
@@ -28,7 +28,10 @@ public class HotelVinnsla {
                 WHERE check_in <= ? AND check_out > ?
                 GROUP BY hotel_id
             ) b ON h.id = b.hotel_id
-            WHERE (h.num_rooms - COALESCE(b.booked_rooms, 0)) > 0;
+            WHERE (h.num_rooms - COALESCE(b.booked_rooms, 0)) > 0
+            AND (? = 0 OR h.pool = 1)
+            AND (? = 0 OR h.gym = 1)
+            AND (? = 0 OR h.bar = 1);
         """;
 
         try{
@@ -37,6 +40,9 @@ public class HotelVinnsla {
 
             pstmt.setString(1, checkOut);
             pstmt.setString(2, checkIn);
+            pstmt.setInt(3, pool ? 1 : 0);
+            pstmt.setInt(4, gym ? 1 : 0);
+            pstmt.setInt(5, bar ? 1 : 0);
             ResultSet rs = pstmt.executeQuery();
 
             while(rs.next()){
@@ -44,7 +50,10 @@ public class HotelVinnsla {
                         rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("location"),
-                        rs.getInt("num_rooms")
+                        rs.getInt("num_rooms"),
+                        rs.getBoolean("pool"),
+                        rs.getBoolean("gym"),
+                        rs.getBoolean("bar")
                         ));
             }
         } catch (SQLException e) {

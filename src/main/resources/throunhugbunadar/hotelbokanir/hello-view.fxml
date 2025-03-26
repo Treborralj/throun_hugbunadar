@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbokanirController">
+<VBox alignment="CENTER" spacing="13.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbokanirController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
@@ -18,26 +18,30 @@
             <Insets />
          </VBox.margin>
       </HBox>
-      <Label text="Plese enter name of a hotel">
+      <Label text="Plese enter the name of a hotel">
          <VBox.margin>
-            <Insets right="55.0" />
+            <Insets />
          </VBox.margin>
       </Label>
       <TextField fx:id="fxNameOfhotel" onAction="#onSearch" />
       <Label text="Filters" />
-      <HBox prefHeight="46.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="46.0" prefWidth="200.0" spacing="10.0">
          <children>
             <CheckBox fx:id="fxPool" mnemonicParsing="false" text="Pool" />
             <CheckBox fx:id="fxGym" mnemonicParsing="false" text="Gym" />
             <CheckBox fx:id="fxBar" mnemonicParsing="false" text="Bar" />
          </children>
+         <VBox.margin>
+            <Insets top="-11.0" />
+         </VBox.margin>
       </HBox>
       <Label fx:id="fxErrorLabel" />
       <Label text="Check-in" />
       <DatePicker fx:id="fxCheckIn" />
       <Label text="Check-out" />
-      <DatePicker fx:id="fxCheckOut" />
+      <DatePicker fx:id="fxCheckOut" onAction="#onSearch" />
       <Button mnemonicParsing="false" onAction="#onSearch" text="Search" />
       <ListView fx:id="fxListView" prefHeight="200.0" prefWidth="200.0" />
+      <Button mnemonicParsing="false" text="Book Hotel" />
    </children>
 </VBox>

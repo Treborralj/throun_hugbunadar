@@ -11,12 +11,18 @@ private String nafn;
 private String stadsetning;
 private int fjoldiHerbergja;
 private int id;
+private boolean bar;
+private boolean spa;
+private boolean parking;
 
-public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja){
+public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja, boolean bar, boolean spa, boolean parking){
     this.id = id;
     this.nafn = nafn;
     this.stadsetning = stadsetning;
     this.fjoldiHerbergja = fjoldiHerbergja;
+    this.bar = bar;
+    this.spa = spa;
+    this.parking = parking;
 }
 
     public String getNafn() {

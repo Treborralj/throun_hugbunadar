@@ -16,7 +16,7 @@ import java.util.List;
  *
  *****************************************************************************/
 public class HotelVinnsla {
-    public static List<Hotel> finnaLausHotel(String checkIn, String checkOut, boolean pool, boolean gym, boolean bar){
+    public static List<Hotel> finnaLausHotel(String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
         List<Hotel> lausHotel = new ArrayList<>();
 
         String sqlSkipun = """
@@ -31,7 +31,8 @@ public class HotelVinnsla {
             WHERE (h.num_rooms - COALESCE(b.booked_rooms, 0)) > 0
             AND (? = 0 OR h.pool = 1)
             AND (? = 0 OR h.gym = 1)
-            AND (? = 0 OR h.bar = 1);
+            AND (? = 0 OR h.bar = 1)
+            AND (? = '' OR h.name LIKE ?);
         """;
 
         try{
@@ -43,6 +44,8 @@ public class HotelVinnsla {
             pstmt.setInt(3, pool ? 1 : 0);
             pstmt.setInt(4, gym ? 1 : 0);
             pstmt.setInt(5, bar ? 1 : 0);
+            pstmt.setString(6, nameOfHotel);
+            pstmt.setString(7, "%" + nameOfHotel + "%");
             ResultSet rs = pstmt.executeQuery();
 
             while(rs.next()){

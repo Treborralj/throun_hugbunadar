@@ -12,12 +12,15 @@ import throunhugbunadar.hotelbokanir.vinnsla.HotelVinnsla;
 import java.util.List;
 
 public class HotelbokanirController {
-
-    public CheckBox fxBar;
-    public CheckBox fxPool;
-    public CheckBox fxGym;
     @FXML
-    private TextField fxTextField;
+    private CheckBox fxBar;
+    @FXML
+    private CheckBox fxPool;
+    @FXML
+    private CheckBox fxGym;
+    @FXML
+    private TextField fxNameOfhotel;
+
     @FXML
     private ListView<Hotel> fxListView;
     @FXML
@@ -33,10 +36,11 @@ public class HotelbokanirController {
         boolean pool = fxPool.isSelected();
         boolean gym = fxGym.isSelected();
         boolean bar = fxBar.isSelected();
+        String nameOfHotel = fxNameOfhotel.getText().trim();
 
         hotel.clear();
 
-        List<Hotel> listiLausHotel = HotelVinnsla.finnaLausHotel(checkInDagur, checkOutDagur, pool, gym, bar);
+        List<Hotel> listiLausHotel = HotelVinnsla.finnaLausHotel(checkInDagur, checkOutDagur, pool, gym, bar, nameOfHotel);
         hotel.addAll(listiLausHotel);
         fxListView.setItems(hotel);
     }

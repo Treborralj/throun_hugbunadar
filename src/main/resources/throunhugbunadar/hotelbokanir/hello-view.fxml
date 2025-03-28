@@ -39,7 +39,7 @@
       <Label text="Check-in" />
       <DatePicker fx:id="fxCheckIn" />
       <Label text="Check-out" />
-      <DatePicker fx:id="fxCheckOut" onAction="#onSearch" />
+      <DatePicker fx:id="fxCheckOut" />
       <Button mnemonicParsing="false" onAction="#onSearch" text="Search" />
       <ListView fx:id="fxListView" prefHeight="200.0" prefWidth="200.0" />
       <Button mnemonicParsing="false" text="Book Hotel" />

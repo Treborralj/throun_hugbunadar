@@ -15,8 +15,8 @@ import java.util.List;
  * Lýsing : 
  *
  *****************************************************************************/
-public class HotelVinnsla {
-    public static List<Hotel> finnaLausHotel(String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
+public class HotelVinnsla implements HotelDatabase {
+    public List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
         List<Hotel> lausHotel = new ArrayList<>();
 
         String sqlSkipun = """
@@ -64,4 +64,5 @@ public class HotelVinnsla {
         }
         return lausHotel;
     }
+
 }

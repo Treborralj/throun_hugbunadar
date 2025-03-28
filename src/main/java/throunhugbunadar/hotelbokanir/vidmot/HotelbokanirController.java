@@ -53,7 +53,8 @@ public class HotelbokanirController {
 
             hotel.clear();
 
-            List<Hotel> listiLausHotel = HotelVinnsla.finnaLausHotel(checkInDagur, checkOutDagur, pool, gym, bar, nameOfHotel);
+            List<Hotel> listiLausHotel = HotelVinnsla.finnaLausHotel(checkInDagur, checkOutDagur,
+                    pool, gym, bar, nameOfHotel);
             hotel.addAll(listiLausHotel);
             fxListView.setItems(hotel);
             fxErrorLabel.setText("");

@@ -3,8 +3,7 @@ package throunhugbunadar.hotelbokanir.vinnsla;
 /******************************************************************************
  * @author Róbert A. Jack
  * Tölvupóstur: ral9@hi.is
- * Lýsing : 
- *
+ * Lýsing :
  *****************************************************************************/
 public class Hotel {
 private String nafn;
@@ -15,7 +14,8 @@ private boolean bar;
 private boolean spa;
 private boolean parking;
 
-public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja, boolean bar, boolean spa, boolean parking){
+public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja,
+             boolean bar, boolean spa, boolean parking){
     this.id = id;
     this.nafn = nafn;
     this.stadsetning = stadsetning;
@@ -40,6 +40,19 @@ public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja, boole
     public int getId() {
         return id;
     }
+
+    public boolean isBar() {
+        return bar;
+    }
+
+    public boolean isSpa() {
+        return spa;
+    }
+
+    public boolean isParking() {
+        return parking;
+    }
+
     public String toString(){
         return nafn + " (" + stadsetning + ") - Herbergi: " + fjoldiHerbergja;
     }

@@ -16,7 +16,8 @@ import java.util.List;
  *
  *****************************************************************************/
 public class HotelVinnsla {
-    public static List<Hotel> finnaLausHotel(String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
+    public static List<Hotel> finnaLausHotel(
+            String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
         List<Hotel> lausHotel = new ArrayList<>();
 
         String sqlSkipun = """

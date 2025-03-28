@@ -1,6 +1,7 @@
 package throunhugbunadar.hotelbokanir;
 
 import org.junit.jupiter.api.Test;
+import throunhugbunadar.hotelbokanir.vinnsla.NoHotelsFoundMock;
 import throunhugbunadar.hotelbokanir.vinnsla.prufa;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

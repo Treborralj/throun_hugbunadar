@@ -32,7 +32,8 @@ public class HotelVinnsla implements HotelDatabase {
             AND (? = 0 OR h.pool = 1)
             AND (? = 0 OR h.gym = 1)
             AND (? = 0 OR h.bar = 1)
-            AND (? = '' OR h.name LIKE ?);
+            AND (? = 'No preference' OR h.name LIKE ?)
+            AND (? = 'No preference' OR h.location LIKE ?);
         """;
 
         try{
@@ -46,6 +47,8 @@ public class HotelVinnsla implements HotelDatabase {
             pstmt.setInt(5, bar ? 1 : 0);
             pstmt.setString(6, nameOfHotel);
             pstmt.setString(7, "%" + nameOfHotel + "%");
+            pstmt.setString(8, location);
+            pstmt.setString(9, "%" + location + "%");
             ResultSet rs = pstmt.executeQuery();
 
             while(rs.next()){

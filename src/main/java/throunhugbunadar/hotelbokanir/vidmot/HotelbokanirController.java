@@ -83,4 +83,16 @@ public class HotelbokanirController {
        }
        fxNameLabel.setText(user.getUsername());
     }
+
+    public void fxOpenBookings(javafx.event.ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mybookings.fxml"));
+        DialogPane MyBookingPane = fxmlLoader.load();
+
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.setTitle("Current Bookings");
+        dialog.setDialogPane(MyBookingPane);
+
+        Optional<ButtonType> result = dialog.showAndWait();
+    }
+
 }

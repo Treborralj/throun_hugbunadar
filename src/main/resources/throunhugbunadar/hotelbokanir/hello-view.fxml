@@ -1,47 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="13.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbokanirController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-  </padding>
-   <children>
-      <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0" spacing="53.0">
-         <children>
-            <Button fx:id="fxSignIn" mnemonicParsing="false" onAction="#fxOpenSignIn" text="Sign-in" />
-            <Label fx:id="fxNameLabel" text="Guest" />
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </HBox>
-      <Label text="Plese enter the name of a hotel">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </Label>
-      <TextField fx:id="fxNameOfhotel" onAction="#onSearch" />
-      <Label text="Filters" />
-      <HBox alignment="CENTER" prefHeight="46.0" prefWidth="200.0" spacing="10.0">
-         <children>
-            <CheckBox fx:id="fxPool" mnemonicParsing="false" text="Pool" />
-            <CheckBox fx:id="fxGym" mnemonicParsing="false" text="Gym" />
-            <CheckBox fx:id="fxBar" mnemonicParsing="false" text="Bar" />
-         </children>
-         <VBox.margin>
-            <Insets top="-11.0" />
-         </VBox.margin>
-      </HBox>
-      <Label fx:id="fxErrorLabel" />
-      <Label text="Check-in" />
-      <DatePicker fx:id="fxCheckIn" />
-      <Label text="Check-out" />
-      <DatePicker fx:id="fxCheckOut" />
-      <Button mnemonicParsing="false" onAction="#onSearch" text="Search" />
-      <ListView fx:id="fxListView" prefHeight="200.0" prefWidth="200.0" />
-      <Button mnemonicParsing="false" text="Book Hotel" />
-   </children>
-</VBox>
+
+<HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbokanirController">
+   <VBox alignment="CENTER" prefHeight="759.0" prefWidth="246.0" spacing="13.0">
+      <padding>
+         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+      </padding>
+      <children>
+         <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0" spacing="53.0">
+            <children>
+               <Button fx:id="fxSignIn" mnemonicParsing="false" onAction="#fxOpenSignIn" text="Sign-in" />
+               <Label fx:id="fxNameLabel" text="Guest" />
+            </children>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
+         </HBox>
+         <Label text="Search available hotels" />
+         <Label />
+         <Label prefHeight="18.0" prefWidth="197.0" text="Time of booking:" />
+         <Label text="Check-in" />
+         <DatePicker fx:id="fxCheckIn" />
+         <Label text="Check-out" />
+         <DatePicker fx:id="fxCheckOut" />
+         <Label prefHeight="7.0" prefWidth="0.0" />
+         <Label prefHeight="18.0" prefWidth="206.0" text="How many rooms do you need?" />
+         <TextField fx:id="fxNumRooms" prefHeight="26.0" prefWidth="166.0" />
+         <Label />
+         <Label prefHeight="18.0" prefWidth="193.0" text="Optional filters:" />
+         <Label text="by hotel name" />
+         <ComboBox fx:id="fxHotelName" prefWidth="150.0" />
+         <Label text="by location:" />
+         <ComboBox fx:id="fxLocation" prefWidth="150.0" />
+         <Label text="by amenities:" />
+         <HBox alignment="CENTER" prefHeight="46.0" prefWidth="200.0" spacing="10.0">
+            <children>
+               <CheckBox fx:id="fxPool" mnemonicParsing="false" text="Pool" />
+               <CheckBox fx:id="fxGym" mnemonicParsing="false" text="Gym" />
+               <CheckBox fx:id="fxBar" mnemonicParsing="false" text="Bar" />
+            </children>
+            <VBox.margin>
+               <Insets top="-11.0" />
+            </VBox.margin>
+         </HBox>
+         <Label fx:id="fxErrorLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="206.0" textFill="#a60b0b" wrapText="true" />
+         <Button mnemonicParsing="false" onAction="#onSearch" text="Search" />
+      </children>
+   </VBox>
+   <VBox fx:id="fxSearchResultBox" prefHeight="759.0" prefWidth="303.0">
+      <children>
+         <ListView fx:id="fxListView" prefHeight="706.0" prefWidth="285.0">
+            <VBox.margin>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </VBox.margin></ListView>
+         <Button mnemonicParsing="false" text="Book Hotel">
+            <VBox.margin>
+               <Insets bottom="25.0" left="40.0" right="20.0" top="20.0" />
+            </VBox.margin>
+         </Button>
+      </children>
+   </VBox>
+</HBox>
+

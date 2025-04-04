@@ -15,9 +15,10 @@ import java.util.List;
  * Lýsing : 
  *
  *****************************************************************************/
-public class HotelVinnsla {
-    public static List<Hotel> finnaLausHotel(
-            String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
+
+public class HotelVinnsla implements HotelDatabase {
+    public List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
+
         List<Hotel> lausHotel = new ArrayList<>();
 
         String sqlSkipun = """
@@ -33,7 +34,8 @@ public class HotelVinnsla {
             AND (? = 0 OR h.pool = 1)
             AND (? = 0 OR h.gym = 1)
             AND (? = 0 OR h.bar = 1)
-            AND (? = '' OR h.name LIKE ?);
+            AND (? = 'No preference' OR h.name LIKE ?)
+            AND (? = 'No preference' OR h.location LIKE ?);
         """;
 
         try{
@@ -47,6 +49,8 @@ public class HotelVinnsla {
             pstmt.setInt(5, bar ? 1 : 0);
             pstmt.setString(6, nameOfHotel);
             pstmt.setString(7, "%" + nameOfHotel + "%");
+            pstmt.setString(8, location);
+            pstmt.setString(9, "%" + location + "%");
             ResultSet rs = pstmt.executeQuery();
 
             while(rs.next()){
@@ -65,4 +69,5 @@ public class HotelVinnsla {
         }
         return lausHotel;
     }
+
 }

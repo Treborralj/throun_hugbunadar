@@ -3,9 +3,10 @@ package throunhugbunadar.hotelbokanir;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import throunhugbunadar.hotelbokanir.vinnsla.Hotel;
-import throunhugbunadar.hotelbokanir.vinnsla.HotelVinnsla;
-import java.util.List;
+
+import throunhugbunadar.hotelbokanir.vinnsla.NoHotelsFoundMock;
+import throunhugbunadar.hotelbokanir.vinnsla.prufa;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 

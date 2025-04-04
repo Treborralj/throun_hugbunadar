@@ -16,7 +16,7 @@ import java.util.List;
  *
  *****************************************************************************/
 
-public class HotelVinnsla implements HotelDatabase {
+public class HotelVinnsla {
     public List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
 
         List<Hotel> lausHotel = new ArrayList<>();

@@ -12,7 +12,6 @@ public class User {
     private String email;
 
     //private Booking[] bookings;
-    //private Review[] reviews;
 
     public User(String username, String password, String email){
         this.username = username;

@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+
 <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbokanirController">
    <VBox alignment="CENTER" prefHeight="759.0" prefWidth="246.0" spacing="13.0">
       <padding>
@@ -71,3 +72,4 @@
       </children>
    </VBox>
 </HBox>
+

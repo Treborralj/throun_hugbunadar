@@ -101,6 +101,7 @@ public class HotelbokanirController implements Initializable {
 
             System.out.print("hotels found: "+listiLausHotel.size());
 
+
             fxListView.setItems(hotels);
             fxErrorLabel.setText("");
         }

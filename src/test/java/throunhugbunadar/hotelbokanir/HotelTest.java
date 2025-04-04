@@ -1,10 +1,14 @@
 package throunhugbunadar.hotelbokanir;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import throunhugbunadar.hotelbokanir.vinnsla.NoHotelsFoundMock;
 import throunhugbunadar.hotelbokanir.vinnsla.prufa;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /******************************************************************************
  * @author Róbert A. Jack
@@ -13,9 +17,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  *****************************************************************************/
 public class HotelTest {
-    @Test
-    void testSearchHotel(){
-        prufa prufa = new prufa();
-        assertEquals(2,prufa.plus(1,1));
+    private MockHotel hotels;
+
+    @BeforeEach
+    void setup(){
+        hotels = new MockHotel();
     }
+    @AfterEach
+    void teardown(){
+        hotels = null;
+
+    }
+    @Test
+    void testSearchHotelWithNoParameters(){
+        List<Hotel> results = HotelVinnsla.finnaLausHotel("", "", false, false, false, "");
+        assertFalse(results.isEmpty());
+    }
+    @Test
+    void testSearchByBarOnly() {
+        List<Hotel> results = HotelVinnsla.finnaLausHotel("", "", true, false, false, "");
+        for (Hotel hotel : results) {
+            assertTrue(hotel.isBar());
+        }
+    }
+    @Test
+    void testSearchByNameOnly() {
+        List<Hotel> results = HotelVinnsla.finnaLausHotel("", "", false, false, false, "Hotel Rey");
+        assertTrue(results.stream().anyMatch(h -> h.getNafn().toLowerCase().contains("hotel rey")));
+    }
+
 }

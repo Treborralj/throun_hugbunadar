@@ -97,34 +97,44 @@ public class HotelbookingController implements Initializable {
     }
 
     public void fxOpenSignIn(ActionEvent event) throws IOException {
-       try {
-           FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sign-in-dialog.fxml"));
-           DialogPane SignInDialogPane = fxmlLoader.load();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("sign-in-dialog.fxml"));
+            DialogPane SignInDialogPane = fxmlLoader.load();
 
-           Dialog<ButtonType> dialog = new Dialog<>();
-           dialog.setTitle("Sign In");
-           dialog.setDialogPane(SignInDialogPane);
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setTitle("Sign In");
+            dialog.setDialogPane(SignInDialogPane);
 
-           Optional<ButtonType> result = dialog.showAndWait();
+            Optional<ButtonType> result = dialog.showAndWait();
 
-           if (result.isPresent() && result.get() == ButtonType.OK) {
-               SignInController controller = fxmlLoader.getController();
-               String username = controller.getUserName();
-               String password = controller.getPassword();
-               String email = controller.getEmail();
-               if(UserDB.findUser(username, email, password) == null){
-                   UserDB.addUser(username, email, password);
-                   user = UserDB.findUser(username, email, password);
-               }
-               else{
-                   user = UserDB.findUser(username, email, password);
-               }
-           }
-       }catch (IOException e){
-           e.printStackTrace();
-       }
-        assert user != null;
-        fxNameLabel.setText(user.getUsername());
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                SignInController controller = fxmlLoader.getController();
+                String username = controller.getUserName().trim();
+                String password = controller.getPassword().trim();
+                String email = controller.getEmail().trim();
+
+                User foundUser = UserDB.findUser(username, email, password);
+
+                if (foundUser == null) {
+                    UserDB.addUser(username, email, password);
+                    foundUser = UserDB.findUser(username, email, password);
+                }
+                if (foundUser != null) {
+                    user = foundUser;
+                    fxNameLabel.setText(user.getUsername());
+                    fxErrorLabel.setText("");
+                } else {
+                    fxErrorLabel.setText("Sign-in failed. Please check your info.");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (user != null) {
+            fxNameLabel.setText(user.getUsername());
+        } else {
+            fxErrorLabel.setText("Could not sign in.");
+        }
     }
 
     public void fxOpenBooking(){
@@ -158,8 +168,7 @@ public class HotelbookingController implements Initializable {
             }
         }
         else{
-            fxErrorLabel.setText("Befor booking you must sign-in, select check-out and check-in dates, select a hotel and select the number of rooms needed");
+            fxErrorLabel.setText("Before booking you must sign-in, select check-out and check-in dates, select a hotel and select the number of rooms needed");
         }
-
     }
 }

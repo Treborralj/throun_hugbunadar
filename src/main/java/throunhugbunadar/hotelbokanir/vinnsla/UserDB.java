@@ -12,12 +12,11 @@ import java.sql.SQLException;
  *
  *****************************************************************************/
 public class UserDB {
-    public static void addUser(String username, String email, String password){
+    public static void addUser(String username, String email, String password) {
         String sql = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
 
-        try  {
-            Connection conn = ConnectionToDB.connect();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+        try (Connection conn = ConnectionToDB.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, username);
             pstmt.setString(2, email);
@@ -25,40 +24,39 @@ public class UserDB {
 
             int radir = pstmt.executeUpdate();
             if (radir > 0) {
-                System.out.println("User save successfully: " + username );
+                System.out.println("User saved successfully: " + username);
             } else {
                 System.out.println("Could not save user");
             }
         } catch (SQLException e) {
-            System.out.println("Error inserting user into table" + e.getMessage());
+            System.out.println("Error inserting user into table: " + e.getMessage());
         }
     }
-    public static User findUser(String username, String email, String password){
+
+    public static User findUser(String username, String email, String password) {
         String sql = "SELECT * FROM users WHERE username = ? AND email = ? AND password = ?";
 
-        try  {
-            Connection conn = ConnectionToDB.connect();
-            PreparedStatement pstmt = conn.prepareStatement(sql);
+        try (Connection conn = ConnectionToDB.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, username);
             pstmt.setString(2, email);
             pstmt.setString(3, password);
 
-            ResultSet rs = pstmt.executeQuery();
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    int userId = rs.getInt("id");
+                    String uname = rs.getString("username");
+                    String mail = rs.getString("email");
+                    String pass = rs.getString("password");
 
-            if (rs.next()) {
-                int userId = rs.getInt("id");
-                String uname = rs.getString("username");
-                String mail = rs.getString("email");
-                String pass = rs.getString("password");
-
-                return new User(uname, mail, pass, userId);
-            } else {
-                return null;
+                    return new User(uname, mail, pass, userId);
+                }
             }
         } catch (SQLException e) {
-            System.out.println("Error inserting user into table" + e.getMessage());
+            System.out.println("Error finding user: " + e.getMessage());
         }
+
         return null;
     }
 }

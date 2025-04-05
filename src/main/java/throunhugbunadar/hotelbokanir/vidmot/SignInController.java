@@ -18,14 +18,14 @@ public class SignInController {
     private TextField fxPassword;
 
     public String getUserName() {
-        return fxName.getText().trim();
+        return fxName.getText();
     }
 
     public String getPassword() {
         return fxPassword.getText();
     }
     public String getEmail(){
-        return fxEmail.getText().trim();
+        return fxEmail.getText();
     }
 
 }

@@ -1,5 +1,8 @@
 package throunhugbunadar.hotelbokanir.vinnsla;
 
+import java.util.List;
+
+
 /******************************************************************************
  * @author Róbert A. Jack
  * Tölvupóstur: ral9@hi.is
@@ -11,7 +14,7 @@ public class User {
     private String password;
     private String email;
 
-    //private Booking[] bookings;
+    //private List<Booking> bookings;
 
     public User(String username, String password, String email){
         this.username = username;

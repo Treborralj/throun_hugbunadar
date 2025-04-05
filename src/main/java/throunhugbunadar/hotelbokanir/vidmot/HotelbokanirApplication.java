@@ -12,7 +12,9 @@ public class HotelbokanirApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HotelbokanirApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 600);
-        stage.setTitle("Hótel bókun!!");
+        stage.setMinWidth(563);
+        stage.setMinHeight(800);
+        stage.setTitle("Hótelbókun!!");
         stage.setScene(scene);
         stage.show();
     }

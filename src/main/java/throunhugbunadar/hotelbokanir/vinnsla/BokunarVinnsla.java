@@ -12,7 +12,8 @@ import java.sql.SQLException;
  *****************************************************************************/
 public class BokunarVinnsla {
     public static void baetaVidBokun(int hotelId, String nafnKunna, String checkIn, String checkOut) {
-        String sql = "INSERT INTO bookings (hotel_id, customer_name, check_in, check_out) VALUES (?, ?, ?, ?)";
+        String sql =
+                "INSERT INTO bookings (hotel_id, customer_name, check_in, check_out) VALUES (?, ?, ?, ?)";
 
         try  {
             Connection conn = GagnasafnsTenging.connect();

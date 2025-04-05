@@ -16,9 +16,9 @@ import java.util.List;
  *
  *****************************************************************************/
 
-public class HotelVinnsla {
-    public List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
-
+public class HotelDB {
+    public List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut,
+                                           boolean pool, boolean gym, boolean bar, String nameOfHotel) {
         List<Hotel> lausHotel = new ArrayList<>();
 
         String sqlSkipun = """
@@ -38,9 +38,8 @@ public class HotelVinnsla {
             AND (? = 'No preference' OR h.location LIKE ?);
         """;
 
-        try{
-            Connection conn = GagnasafnsTenging.connect();
-            PreparedStatement pstmt = conn.prepareStatement(sqlSkipun);
+        try (Connection conn = ConnectionToDB.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sqlSkipun)) {
 
             pstmt.setString(1, checkOut);
             pstmt.setString(2, checkIn);
@@ -51,23 +50,24 @@ public class HotelVinnsla {
             pstmt.setString(7, "%" + nameOfHotel + "%");
             pstmt.setString(8, location);
             pstmt.setString(9, "%" + location + "%");
-            ResultSet rs = pstmt.executeQuery();
 
-            while(rs.next()){
-                lausHotel.add(new Hotel(
-                        rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("location"),
-                        rs.getInt("num_rooms"),
-                        rs.getBoolean("pool"),
-                        rs.getBoolean("gym"),
-                        rs.getBoolean("bar")
-                        ));
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    lausHotel.add(new Hotel(
+                            rs.getInt("id"),
+                            rs.getString("name"),
+                            rs.getString("location"),
+                            rs.getInt("num_rooms"),
+                            rs.getBoolean("pool"),
+                            rs.getBoolean("gym"),
+                            rs.getBoolean("bar")
+                    ));
+                }
             }
         } catch (SQLException e) {
-            System.out.println("Ekki tókst að sækja laus hótel " + e.getMessage());
+            System.out.println("Ekki tókst að sækja laus hótel: " + e.getMessage());
         }
+
         return lausHotel;
     }
-
 }

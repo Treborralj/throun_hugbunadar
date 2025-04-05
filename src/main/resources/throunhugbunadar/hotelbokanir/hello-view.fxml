@@ -4,7 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<<<<<<< HEAD
 <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbokanirController">
+=======
+<HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbookingController">
+>>>>>>> bd7363abed4fb4c44f61799520dea6d4029d3129
    <VBox alignment="CENTER" prefHeight="759.0" prefWidth="246.0" spacing="13.0">
       <padding>
          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -31,7 +35,7 @@
          <DatePicker fx:id="fxCheckOut" />
          <Label prefHeight="7.0" prefWidth="0.0" />
          <Label prefHeight="18.0" prefWidth="206.0" text="How many rooms do you need?" />
-         <TextField fx:id="fxNumRooms" prefHeight="26.0" prefWidth="166.0" />
+         <TextField fx:id="fxNumberOfRooms" />
          <Label />
          <Label prefHeight="18.0" prefWidth="193.0" text="Optional filters:" />
          <Label text="by hotel name" />
@@ -59,7 +63,7 @@
             <VBox.margin>
                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </VBox.margin></ListView>
-         <Button mnemonicParsing="false" text="Book Hotel">
+         <Button fx:id="fxOpenBooking" mnemonicParsing="false" onAction="#fxOpenBooking" text="Book Hotel">
             <VBox.margin>
                <Insets bottom="25.0" left="40.0" right="20.0" top="20.0" />
             </VBox.margin>

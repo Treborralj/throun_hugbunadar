@@ -5,14 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import throunhugbunadar.hotelbokanir.vidmot.SignInController;
-import throunhugbunadar.hotelbokanir.vinnsla.GagnasafnsTenging;
-import throunhugbunadar.hotelbokanir.vinnsla.Hotel;
-import throunhugbunadar.hotelbokanir.vinnsla.HotelVinnsla;
-import throunhugbunadar.hotelbokanir.vinnsla.User;
+import throunhugbunadar.hotelbokanir.vinnsla.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -41,7 +41,13 @@ public class HotelbokanirController implements Initializable {
     private ComboBox<String> fxHotelName;
     @FXML
     private ComboBox<String> fxLocation;
-
+    @FXML
+    private Button fxBookingsButton;
+/* TODO
+    @FXML
+    private ListView<Bokun> fxBokunView;
+    private ObservableList<Bokun> bokanir = FXCollections.observableArrayList();
+*/
     @FXML
     private ListView<Hotel> fxListView;
     @FXML
@@ -118,13 +124,17 @@ public class HotelbokanirController implements Initializable {
 
            Optional<ButtonType> result = dialog.showAndWait();
 
+
            if (result.isPresent() && result.get() == ButtonType.OK) {
+               //birta My Bookings takkann
+               fxBookingsButton.setVisible(true);
                SignInController controller = fxmlLoader.getController();
                String username = controller.getUserName();
                String password = controller.getPassword();
                String email = controller.getEmail();
                user = new User(username, password, email);
            }
+
        }catch (IOException e){
            e.printStackTrace();
        }
@@ -133,13 +143,23 @@ public class HotelbokanirController implements Initializable {
 
     public void fxOpenBookings(javafx.event.ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mybookings.fxml"));
-        DialogPane MyBookingPane = fxmlLoader.load();
+        Pane MyBookingPane = fxmlLoader.load();
 
-        Dialog<ButtonType> dialog = new Dialog<>();
-        dialog.setTitle("Current Bookings");
-        dialog.setDialogPane(MyBookingPane);
+        Scene scene = new Scene(MyBookingPane);
+        Stage stage = new Stage();
+        stage.setTitle("Current Bookings");
+        stage.setScene(scene);
+        stage.show();
+        /* TODO
+        BokunarVinnsla vinnsla = new BokunarVinnsla;
+        String notandaEmail = user.getEmail();
+        List<Bokun> listiMinarBokanir = vinnsla.getCurrentBookings(notandaEmail);
+        bokanir.addAll(listiMinarBokanir);
 
-        Optional<ButtonType> result = dialog.showAndWait();
+        fxBokunView.setItems(bokanir);
+        fxErrorLabel.setText("");
+
+         */
     }
 
 }

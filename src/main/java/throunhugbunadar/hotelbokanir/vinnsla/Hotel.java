@@ -47,6 +47,15 @@ public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja, boole
     public boolean hasBar() {return bar;}
 
     public String toString(){
-        return nafn + " (" + stadsetning + ") - Herbergi: " + fjoldiHerbergja;
+        String hotelString = nafn + " (" + stadsetning + ")" + " \n";
+        if (pool) {
+            hotelString = hotelString + "Pool";
+            if (gym || bar) hotelString = hotelString + ", ";}
+        if (gym) {
+            hotelString = hotelString + "Gym";
+            if (bar) hotelString = hotelString + ", ";
+        }
+        if (bar) hotelString = hotelString + "Bar";
+        return hotelString;
     }
 }

@@ -1,8 +1,6 @@
 package throunhugbunadar.hotelbokanir.vinnsla;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /******************************************************************************
  * @author Róbert A. Jack
@@ -10,7 +8,7 @@ import java.util.List;
  * Lýsing : 
  *
  *****************************************************************************/
-public class GagnasafnsTenging {
+public class ConnectionToDB {
     private static final String gagnasafnsURL =
             "jdbc:sqlite:src/main/resources/hotel_bookin.db";
 

@@ -16,7 +16,7 @@ import java.util.List;
  *
  *****************************************************************************/
 
-public class HotelVinnsla {
+public class HotelDB {
     public List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut, boolean pool, boolean gym, boolean bar, String nameOfHotel){
 
         List<Hotel> lausHotel = new ArrayList<>();
@@ -39,7 +39,7 @@ public class HotelVinnsla {
         """;
 
         try{
-            Connection conn = GagnasafnsTenging.connect();
+            Connection conn = ConnectionToDB.connect();
             PreparedStatement pstmt = conn.prepareStatement(sqlSkipun);
 
             pstmt.setString(1, checkOut);

@@ -6,36 +6,36 @@ package throunhugbunadar.hotelbokanir.vinnsla;
  * Lýsing :
  *****************************************************************************/
 public class Hotel {
-private String nafn;
-private String stadsetning;
-private int fjoldiHerbergja;
+private String name;
+private String location;
+private int numberOfRooms;
 private int id;
 private boolean pool;
 private boolean gym;
 private boolean bar;
 
 
-public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja, boolean pool, boolean gym, boolean bar){
+public Hotel(int id, String name, String location, int numberOfRooms, boolean pool, boolean gym, boolean bar){
 
     this.id = id;
-    this.nafn = nafn;
-    this.stadsetning = stadsetning;
-    this.fjoldiHerbergja = fjoldiHerbergja;
+    this.name = name;
+    this.location = location;
+    this.numberOfRooms = numberOfRooms;
     this.pool = pool;
     this.gym = gym;
     this.bar = bar;
 }
 
-    public String getNafn() {
-        return nafn;
+    public String getName() {
+        return name;
     }
 
-    public String getStadsetning() {
-        return stadsetning;
+    public String getLocation() {
+        return location;
     }
 
-    public int getFjoldiHerbergja() {
-        return fjoldiHerbergja;
+    public int getNumberOfRooms() {
+        return numberOfRooms;
     }
 
     public int getId() {
@@ -47,6 +47,6 @@ public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja, boole
     public boolean hasBar() {return bar;}
 
     public String toString(){
-        return nafn + " (" + stadsetning + ") - Herbergi: " + fjoldiHerbergja;
+        return name + " (" + location + ") - Herbergi: " + numberOfRooms;
     }
 }

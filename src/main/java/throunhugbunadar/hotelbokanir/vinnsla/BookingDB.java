@@ -10,32 +10,29 @@ import java.sql.SQLException;
  * Lýsing : 
  *
  *****************************************************************************/
-public class BokunarVinnsla {
-    public static void baetaVidBokun(int hotelId, String nafnKunna, String checkIn, String checkOut) {
+public class BookingDB {
+    public static void addBooking(int hotelId, int userID, String checkIn, String checkOut, int numberOfRooms) {
         String sql =
-                "INSERT INTO bookings (hotel_id, customer_name, check_in, check_out) VALUES (?, ?, ?, ?)";
+                "INSERT INTO bookings (hotel_id, userID, check_in, check_out, numberOfRooms) VALUES (?, ?, ?, ?, ?)";
 
         try  {
-            Connection conn = GagnasafnsTenging.connect();
+            Connection conn = ConnectionToDB.connect();
             PreparedStatement pstmt = conn.prepareStatement(sql);
 
             pstmt.setInt(1, hotelId);
-            pstmt.setString(2, nafnKunna);
+            pstmt.setInt(2, userID);
             pstmt.setString(3, checkIn);
             pstmt.setString(4, checkOut);
+            pstmt.setInt(5, numberOfRooms);
 
             int radir = pstmt.executeUpdate();
             if (radir > 0) {
-                System.out.println("Bókun tókst fyrir " + nafnKunna);
+                System.out.println("Bókun tókst fyrir " + userID);
             } else {
                 System.out.println("Ekki tókst að senda inn bókun");
             }
         } catch (SQLException e) {
             System.out.println("Galli við að setja bókun inn í gagnasafn" + e.getMessage());
         }
-    }
-
-    public static void main(String[] args) {
-        baetaVidBokun(1, "María Stefánsdóttir", "10-04-2025", "15-04-2025");
     }
 }

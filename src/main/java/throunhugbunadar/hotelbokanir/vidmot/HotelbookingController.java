@@ -8,11 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
+import throunhugbunadar.hotelbokanir.vidmot.BookingController;
 import throunhugbunadar.hotelbokanir.vidmot.SignInController;
-import throunhugbunadar.hotelbokanir.vinnsla.GagnasafnsTenging;
-import throunhugbunadar.hotelbokanir.vinnsla.Hotel;
-import throunhugbunadar.hotelbokanir.vinnsla.HotelVinnsla;
-import throunhugbunadar.hotelbokanir.vinnsla.User;
+import throunhugbunadar.hotelbokanir.vinnsla.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,7 +18,9 @@ import java.util.Optional;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HotelbokanirController implements Initializable {
+public class HotelbookingController implements Initializable {
+    @FXML
+    public TextField fxNumberOfRooms;
     @FXML
     private VBox fxSearchResultBox;
     @FXML
@@ -35,8 +35,6 @@ public class HotelbokanirController implements Initializable {
     private CheckBox fxGym;
     //@FXML
     //private TextField fxNameOfhotel;
-    @FXML
-    private TextField fxNumRooms;
     @FXML
     private ComboBox<String> fxHotelName;
     @FXML
@@ -55,26 +53,20 @@ public class HotelbokanirController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //ObservableList<String> locs =
-                //FXCollections.observableArrayList(places);
         fxLocation.setItems(FXCollections.observableArrayList(places));
         fxLocation.setValue("No preference");
 
-        //ObservableList<String> names =
-                //FXCollections.observableArrayList(htlNames);
         fxHotelName.setItems(FXCollections.observableArrayList(htlNames));
         fxHotelName.setValue("No preference");
 
         fxErrorLabel.setText("");
-
     }
-
 
     @FXML
     public void onSearch(ActionEvent event) {
         int numRooms;
         try {
-            numRooms = Integer.parseInt(fxNumRooms.getText().trim());
+            numRooms = Integer.parseInt(fxNumberOfRooms.getText());
             assert numRooms >= 0;
         } catch(Exception e) {
             fxErrorLabel.setText("Please provide the number of rooms as a non-negative integer");
@@ -93,14 +85,11 @@ public class HotelbokanirController implements Initializable {
 
             hotels.clear();
 
-            //System.out.print(hotelName +" "+ location);
-
-            HotelVinnsla vinnsla = new HotelVinnsla();
+            HotelDB vinnsla = new HotelDB();
             List<Hotel> listiLausHotel = vinnsla.findAvailableHotels(location,checkInDagur, checkOutDagur, pool, gym, bar, hotelName);
             hotels.addAll(listiLausHotel);
 
             System.out.print("hotels found: "+listiLausHotel.size());
-
 
             fxListView.setItems(hotels);
             fxErrorLabel.setText("");
@@ -123,11 +112,54 @@ public class HotelbokanirController implements Initializable {
                String username = controller.getUserName();
                String password = controller.getPassword();
                String email = controller.getEmail();
-               user = new User(username, password, email);
+               if(UserDB.findUser(username, email, password) == null){
+                   UserDB.addUser(username, email, password);
+                   user = UserDB.findUser(username, email, password);
+               }
+               else{
+                   user = UserDB.findUser(username, email, password);
+               }
            }
        }catch (IOException e){
            e.printStackTrace();
        }
-       fxNameLabel.setText(user.getUsername());
+        assert user != null;
+        fxNameLabel.setText(user.getUsername());
+    }
+
+    public void fxOpenBooking(){
+        // && fxCheckIn.getValue() != null && fxCheckOut.getValue() != null && fxNumberOfRooms.getText().isEmpty() && fxListView.getSelectionModel().getSelectedItem() == null
+        if(user != null) {
+            try {
+                Hotel selectedHotel = fxListView.getSelectionModel().getSelectedItem();
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("booking-dialog.fxml"));
+                DialogPane bookingDialogPane = fxmlLoader.load();
+
+                BookingController controller = fxmlLoader.getController();
+                String hotelName = selectedHotel.getName();
+                String checkIn = fxCheckIn.getValue().toString();
+                String checkOut = fxCheckOut.getValue().toString();
+                String username = user.getUsername();
+                int rooms = Integer.parseInt(fxNumberOfRooms.getText());
+
+                controller.setBookingInfo(hotelName, checkIn, checkOut, username, rooms);
+
+                Dialog<ButtonType> dialog = new Dialog<>();
+                dialog.setTitle("Confirm info");
+                dialog.setDialogPane(bookingDialogPane);
+                Optional<ButtonType> result = dialog.showAndWait();
+
+                if (result.isPresent() && result.get() == ButtonType.OK) {
+                    BookingDB.addBooking(selectedHotel.getId(), user.getUserID(), checkIn, checkOut, rooms);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            fxErrorLabel.setText("Befor booking you must sign-in, select check-out and check-in dates, select a hotel and select the number of rooms needed");
+        }
+
     }
 }

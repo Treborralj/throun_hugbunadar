@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane prefHeight="255.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.BookingController">
+   <header>
+      <VBox alignment="CENTER" prefHeight="268.0" prefWidth="290.0" spacing="4.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="0.0" prefWidth="290.0" spacing="2.0">
+               <children>
+                  <Label text="Name:" />
+                  <Label fx:id="fxUsersName" text="Label" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+               <children>
+                  <Label text="Check-in date:" />
+                  <Label fx:id="fxCheckInDate" text="Label" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+               <children>
+                  <Label text="Check-out date:" />
+                  <Label fx:id="fxCheckOutDate" text="Label" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+               <children>
+                  <Label text="Hotel name:" />
+                  <Label fx:id="fxHotelName" text="Label" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+               <children>
+                  <Label text="Number of rooms:" />
+                  <Label fx:id="fxNumberOfRooms" text="Label" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+   </header>
+   <buttonTypes>
+      <ButtonType fx:constant="OK" />
+      <ButtonType fx:constant="CANCEL" />
+   </buttonTypes>
+</DialogPane>

@@ -13,17 +13,22 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private int userID;
 
     //private List<Booking> bookings;
 
-    public User(String username, String password, String email){
+    public User(String username, String password, String email, int userID){
         this.username = username;
         this.password = password;
         this.email = email;
+        this.userID = userID;
     }
 
     public String getUsername() {
         return username;
+    }
+    public int getUserID(){
+        return userID;
     }
 
     public void setUsername(String username) {

@@ -191,8 +191,7 @@ public class HotelbookingController implements Initializable {
             BookingDB vinnsla = new BookingDB();
             int userId = user.getUserID();
             List<Booking> listMyBookings = vinnsla.getBookings(userId);
-
-            bookings.setAll(listMyBookings); // clear + addAll
+            bookings.setAll(listMyBookings);
             controller.setBookingsList(bookings);
 
             Scene scene = new Scene(myBookingPane);
@@ -200,12 +199,9 @@ public class HotelbookingController implements Initializable {
             stage.setTitle("Current Bookings");
             stage.setScene(scene);
             stage.show();
-
-            bookings.setAll(listMyBookings);
         }
         catch (IOException e) {
             e.printStackTrace();
-            return;
         }
     }
 

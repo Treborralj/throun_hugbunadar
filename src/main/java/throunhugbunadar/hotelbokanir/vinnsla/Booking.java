@@ -45,7 +45,6 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "You have booked " + numberOfRooms + " room from " + checkIn + " to " + checkOut;
-        //þarf að prenta hótel nafn ekki hótel id
+        return "You have booked " + numberOfRooms + " room/s " + " from " + checkIn + " to " + checkOut;
     }
 }

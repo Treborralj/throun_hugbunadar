@@ -13,8 +13,10 @@ public class MyBookingsController {
     private final ObservableList<Booking> bookings = FXCollections.observableArrayList();
 
     public void setBookingsList(ObservableList<Booking> list) {
-        bookings.setAll(list); // Or .addAll(list) if needed
+        bookings.setAll(list);
         fxBookingList.setItems(bookings);
     }
+
+
 }
 

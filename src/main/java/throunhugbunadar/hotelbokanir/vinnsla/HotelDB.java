@@ -17,7 +17,7 @@ import java.util.List;
  *****************************************************************************/
 
 public class HotelDB {
-    public List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut,
+    public static List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut,
                                            boolean pool, boolean gym, boolean bar, String nameOfHotel) {
         List<Hotel> lausHotel = new ArrayList<>();
 

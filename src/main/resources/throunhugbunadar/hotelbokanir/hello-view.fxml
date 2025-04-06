@@ -4,18 +4,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<<<<<<< HEAD
-<HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbokanirController">
-=======
 <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbookingController">
->>>>>>> bd7363abed4fb4c44f61799520dea6d4029d3129
-   <VBox alignment="CENTER" prefHeight="759.0" prefWidth="246.0" spacing="13.0">
+<VBox alignment="CENTER" prefHeight="759.0" prefWidth="246.0" spacing="13.0">
       <padding>
          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
       </padding>
       <children>
          <HBox alignment="BASELINE_RIGHT" prefHeight="42.0" prefWidth="200.0" spacing="53.0">
-         <Button fx:id="fxBookingsButton" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#fxOpenBookings" prefHeight="26.0" prefWidth="95.0" text="My Bookings" textAlignment="RIGHT" visible="false"/>
+         <Button fx:id="fxBookingsButton" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#fxMyBookings" prefHeight="26.0" prefWidth="95.0" text="My Bookings" textAlignment="RIGHT" visible="false"/>
          </HBox>
          <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0" spacing="53.0">
             <children>

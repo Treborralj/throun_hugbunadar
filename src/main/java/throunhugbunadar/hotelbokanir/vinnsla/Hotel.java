@@ -15,7 +15,7 @@ private boolean gym;
 private boolean bar;
 
 
-public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja, boolean pool, boolean gym, boolean bar){
+public Hotel(int id, String name, String location, int numberOfRooms, boolean pool, boolean gym, boolean bar){
 
     this.id = id;
     this.name = name;
@@ -47,7 +47,7 @@ public Hotel(int id, String nafn, String stadsetning, int fjoldiHerbergja, boole
     public boolean hasBar() {return bar;}
 
     public String toString(){
-        String hotelString = nafn + " (" + stadsetning + ")" + " \n";
+        String hotelString = name + " (" + location + ")" + " \n";
         if (pool) {
             hotelString = hotelString + "Pool";
             if (gym || bar) hotelString = hotelString + ", ";}

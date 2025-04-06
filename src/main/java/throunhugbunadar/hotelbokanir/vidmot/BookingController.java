@@ -1,11 +1,15 @@
 package throunhugbunadar.hotelbokanir.vidmot;
 
 import javafx.scene.control.Label;
+import throunhugbunadar.hotelbokanir.vinnsla.Booking;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /******************************************************************************
  * @author Róbert A. Jack
  * Tölvupóstur: ral9@hi.is
- * Lýsing : 
+ * Lýsing :
  *
  *****************************************************************************/
 public class BookingController {

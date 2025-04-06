@@ -1,14 +1,13 @@
 package throunhugbunadar.hotelbokanir.vinnsla;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /******************************************************************************
  * @author Róbert A. Jack
  * Tölvupóstur: ral9@hi.is
- * Lýsing : 
+ * Lýsing :
  *
  *****************************************************************************/
 public class BookingDB {
@@ -45,4 +44,35 @@ public class BookingDB {
             System.out.println("Galli við að setja bókun inn í gagnasafn: " + e.getMessage());
         }
     }
+
+    public List<Booking> getBookings(int userID) {
+        List<Booking> bookings = new ArrayList<>();
+        String sql = "SELECT * FROM bookings WHERE user_id = ?";
+
+        try (Connection conn = ConnectionToDB.connect();
+             Statement stmt = conn.createStatement();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            stmt.execute("PRAGMA foreign_keys = ON");
+
+            pstmt.setInt(1, userID);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int bookingId = rs.getInt("booking_id");
+                int hotelId = rs.getInt("hotel_id");
+                String checkIn = rs.getString("check_in");
+                String checkOut = rs.getString("check_out");
+                int roomsBooked = rs.getInt("rooms_booked");
+
+                Booking booking = new Booking(bookingId, hotelId, userID, checkIn, checkOut, roomsBooked);
+                bookings.add(booking);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Villa við að sækja bókanir: " + e.getMessage());
+        }
+        return bookings;
+    }
+
 }

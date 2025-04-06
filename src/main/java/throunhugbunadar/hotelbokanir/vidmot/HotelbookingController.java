@@ -5,10 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import throunhugbunadar.hotelbokanir.vidmot.BookingController;
+import throunhugbunadar.hotelbokanir.vidmot.MyBookingsController;
 import throunhugbunadar.hotelbokanir.vidmot.SignInController;
 import throunhugbunadar.hotelbokanir.vinnsla.*;
 
@@ -33,6 +37,8 @@ public class HotelbookingController implements Initializable {
     private CheckBox fxPool;
     @FXML
     private CheckBox fxGym;
+    @FXML
+    private Button fxBookingsButton;
     //@FXML
     //private TextField fxNameOfhotel;
     @FXML
@@ -43,11 +49,14 @@ public class HotelbookingController implements Initializable {
     @FXML
     private ListView<Hotel> fxListView;
     @FXML
+    private ListView<Booking> fxBookingList;
+    @FXML
     private DatePicker fxCheckIn;
     @FXML
     private DatePicker fxCheckOut;
     private User user;
     private ObservableList<Hotel> hotels = FXCollections.observableArrayList();
+    private ObservableList<Booking> bookings = FXCollections.observableArrayList();
     private final String[] places = {"No preference","Reykjavik", "Selfoss", "Akureyri", "Egilsstadir", "Vik","Hvammstangi","Isafjordur"};
     private final String[] htlNames = {"No preference","Hotel Reykjavik", "Hotel Selfoss", "Hotel Akureyri", "Hotel Egilsstadir", "Hotel Vik","Hotel Hvammstangi","Hotel Hilton","Hotel Isafjordur","Hotel Fron","Hotel Austur","Hotel Hraun","Hotel Nord"};
 
@@ -123,6 +132,7 @@ public class HotelbookingController implements Initializable {
                     user = foundUser;
                     fxNameLabel.setText(user.getUsername());
                     fxErrorLabel.setText("");
+                    fxBookingsButton.setVisible(true);
                 } else {
                     fxErrorLabel.setText("Sign-in failed. Please check your info.");
                 }
@@ -171,4 +181,32 @@ public class HotelbookingController implements Initializable {
             fxErrorLabel.setText("Before booking you must sign-in, select check-out and check-in dates, select a hotel and select the number of rooms needed");
         }
     }
+
+    public void fxMyBookings() throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mybookings.fxml"));
+            Pane myBookingPane = fxmlLoader.load();
+
+            MyBookingsController controller = fxmlLoader.getController();
+            BookingDB vinnsla = new BookingDB();
+            int userId = user.getUserID();
+            List<Booking> listMyBookings = vinnsla.getBookings(userId);
+
+            bookings.setAll(listMyBookings); // clear + addAll
+            controller.setBookingsList(bookings);
+
+            Scene scene = new Scene(myBookingPane);
+            Stage stage = new Stage();
+            stage.setTitle("Current Bookings");
+            stage.setScene(scene);
+            stage.show();
+
+            bookings.setAll(listMyBookings);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+
 }

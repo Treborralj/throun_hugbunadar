@@ -11,7 +11,6 @@ import javafx.scene.layout.VBox;
 import throunhugbunadar.hotelbokanir.vidmot.BookingController;
 import throunhugbunadar.hotelbokanir.vidmot.SignInController;
 import throunhugbunadar.hotelbokanir.vinnsla.*;
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -86,7 +85,7 @@ public class HotelbookingController implements Initializable {
             hotels.clear();
 
             HotelDB vinnsla = new HotelDB();
-            List<Hotel> listiLausHotel = vinnsla.findAvailableHotels(location,checkInDagur, checkOutDagur, pool, gym, bar, hotelName);
+            List<Hotel> listiLausHotel = vinnsla.findAvailableHotels(location, checkInDagur, checkOutDagur, pool, gym, bar, hotelName, numRooms);
             hotels.addAll(listiLausHotel);
 
             System.out.print("hotels found: "+listiLausHotel.size());

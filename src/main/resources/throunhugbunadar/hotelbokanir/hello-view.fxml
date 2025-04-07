@@ -11,12 +11,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelController">
+<HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" stylesheets="@../../css/hello-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelController">
    <VBox alignment="CENTER" prefHeight="759.0" prefWidth="246.0" spacing="13.0">
       <padding>
          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
       </padding>
       <children>
+         <HBox alignment="BASELINE_RIGHT" prefHeight="42.0" prefWidth="200.0" spacing="53.0">
+         <Button fx:id="fxBookingsButton" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#fxMyBookings" prefHeight="26.0" prefWidth="200.0" text="My Bookings" textAlignment="RIGHT" visible="false"/>
+         </HBox>
          <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0" spacing="53.0">
             <children>
                <Button fx:id="fxOpenSignIn" mnemonicParsing="false" onAction="#fxOpenSignIn" text="Sign-in" />
@@ -26,16 +29,16 @@
                <Insets />
             </VBox.margin>
          </HBox>
-         <Label text="Search available hotels" />
+         <Label id="SearchLabelCSS" text="Search available hotels" />
          <Label />
-         <Label prefHeight="18.0" prefWidth="197.0" text="Time of booking:" />
-         <Label text="Check-in" />
+         <Label id="TimeOfBookingCSS" prefHeight="18.0" prefWidth="197.0" text="Time of booking:" />
+         <Label id = "CheckInLabelCSS" text="Check-in" />
          <DatePicker fx:id="fxCheckIn" />
-         <Label text="Check-out" />
+         <Label id = "CheckOutLabelCSS" text="Check-out" />
          <DatePicker fx:id="fxCheckOut" />
          <Label prefHeight="7.0" prefWidth="0.0" />
-         <Label prefHeight="18.0" prefWidth="206.0" text="How many rooms do you need?" />
-         <TextField fx:id="fxNumRooms" prefHeight="26.0" prefWidth="166.0" />
+         <Label id = "NumberOfRoomsLabelCSS" prefHeight="18.0" prefWidth="206.0" text="How many rooms do you need?" />
+         <TextField fx:id="fxNumRooms" />
          <Label />
          <Label prefHeight="18.0" prefWidth="193.0" text="Optional filters:" />
          <Label text="by hotel name" />
@@ -54,7 +57,7 @@
             </VBox.margin>
          </HBox>
          <Label fx:id="fxErrorLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="206.0" textFill="#a60b0b" wrapText="true" />
-         <Button mnemonicParsing="false" onAction="#onSearch" text="Search" />
+         <Button id = "SearchButtonCSS" mnemonicParsing="false" onAction="#onSearch" text="Search" />
       </children>
    </VBox>
    <VBox fx:id="fxSearchResultBox" prefHeight="759.0" prefWidth="303.0">

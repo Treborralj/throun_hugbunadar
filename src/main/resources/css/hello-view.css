@@ -1,0 +1,312 @@
+.root{
+    -fx-background-color: #afafaf;
+}
+
+#fxSignIn, #fxOpenBooking, #SearchButtonCSS {
+  -fx-text-fill: black;
+      -fx-font-family: "Arial";
+      -fx-font-size: 12px;
+      -fx-font-weight: bold;
+      -fx-font-style: italic;
+      -fx-background-color: #bfbfbf;
+      -fx-background-radius: 5px;
+      -fx-border-color: #595959;
+      -fx-border-width: 2px;
+      -fx-border-radius: 5px;
+      -fx-pref-width: 80px;
+      -fx-pref-height: 40px;
+      -fx-padding: 8px 16px;
+  }
+
+#fxBookingsButton {
+    -fx-text-fill: black;
+    -fx-font-family: "Arial";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-background-color: #bfbfbf;
+    -fx-background-radius: 5px;
+    -fx-border-color: #595959;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 120px;
+    -fx-pref-height: 40px;
+    -fx-padding: 8px 16px;
+}
+
+#fxNameLabel{
+    -fx-text-fill: black;
+    -fx-font-family: "italic";
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-padding: 0;
+
+}
+#SearchLabelCSS{
+-fx-font-family: "Arial";
+      -fx-font-size: 12px;
+      -fx-font-weight: bold;
+      -fx-font-style: italic;
+}
+#TimeOfBookingCSS{
+-fx-font-family: "Arial";
+      -fx-font-size: 10px;
+      -fx-font-weight: bold;
+
+      }
+
+#fxOpenBooking{
+-fx-pref-width: 100px;
+}
+#CheckInLabelCSS, #CheckOutLabelCSS{
+-fx-font-family: "Arial";
+      -fx-font-size: 10px;
+      -fx-font-weight: bold;
+
+}
+/************************* DatePicker ***********************************************/
+.date-picker {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d1d1;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-pref-width: 150px;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: #808080;
+    -fx-background-radius: 0 10px 10px 0;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #3a7bc8;
+}
+
+.date-picker .text-field {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #999;
+    -fx-font-size: 14px;
+}
+
+
+.date-picker-popup {
+    -fx-background-color: white;
+    -fx-border-color: #d1d1d1;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+}
+
+
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #4a90e2;
+    -fx-text-fill: white;
+}
+
+.date-picker-popup .spinner-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+
+.date-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-text-fill: #333;
+}
+
+.date-cell:hover {
+    -fx-background-color: #e6f2ff;
+}
+
+.date-cell:selected {
+    -fx-background-color: #4a90e2;
+    -fx-text-fill: white;
+}
+
+.date-cell:disabled {
+    -fx-text-fill: #ccc;
+}
+
+
+.date-cell.today {
+    -fx-font-weight: bold;
+    -fx-background-color: #d4e6ff;
+}
+
+
+.date-picker-popup .week-number-cell {
+    -fx-text-fill: #999;
+    /*********************************************************************************/
+}
+#NumberOfRoomsLabelCSS{
+-fx-font-family: "Arial";
+      -fx-font-size: 10px;
+      -fx-font-weight: bold;
+}
+.label{
+-fx-font-family: "Arial";
+      -fx-font-size: 10px;
+      -fx-font-weight: bold;
+}
+#fxBooking, #fxLocation{
+}
+/*****************************+Combobox*****************+************************+*/
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d1d1d1;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-pref-width: 150px;
+    -fx-font-size: 14px;
+    -fx-padding: 5px;
+}
+
+
+.combo-box .arrow-button {
+    -fx-background-color: grey;
+    -fx-background-radius: 0;
+    -fx-padding: 5px;
+}
+
+.combo-box .arrow-button:hover {
+    -fx-background-color: #3a7bc8;
+}
+
+
+.combo-box .arrow {
+    -fx-background-color: white;
+}
+
+.combo-box .text-field {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #999;
+}
+.text-field {
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #a0a0a0;
+    -fx-border-width: 1px;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: white;
+    -fx-border-color: #d1d1d1;
+    -fx-border-radius: 4px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+    -fx-pref-width: 150px;
+}
+
+
+.combo-box-popup .list-cell {
+    -fx-padding: 5px 10px;
+    -fx-background-color: white;
+    -fx-text-fill: #333;
+}
+
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #e6f2ff;
+}
+
+.combo-box-popup .list-cell:selected {
+    -fx-background-color: #4a90e2;
+    -fx-text-fill: white;
+}
+
+.combo-box:disabled {
+    -fx-opacity: 0.7;
+}
+/***********************************************************+************************+*/
+.check-box {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+.check-box .box {
+    -fx-background-color: #e8e8eb;
+    -fx-border-color: #e8e8eb;
+    -fx-border-radius: 4px;
+    -fx-border-width: 2px;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+    -fx-background-radius: 4px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 2, 0, 0, 1);
+}
+
+.check-box:hover .box {
+    -fx-border-color: #0b76ef;
+}
+
+.check-box:selected .box {
+    -fx-border-color: #0b76ef;
+    -fx-background-color: #0b76ef;
+}
+
+.check-box .mark {
+    -fx-shape: "M2 8.5L6 12.5L14 1.5";
+    -fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+    -fx-stroke: white;
+    -fx-stroke-width: 2.5;
+    -fx-stroke-line-cap: round;
+    -fx-stroke-line-join: round;
+    -fx-translate-y: 1px;
+}
+
+.check-box:selected .mark {
+    -fx-rotate: 0;
+    -fx-opacity: 1;
+    -fx-scale-x: 0.8;
+    -fx-scale-y: 0.8;
+}
+
+.check-box .mark {
+    -fx-transition: -fx-opacity 0.2s, -fx-rotate 0.4s;
+}
+
+#fxListView {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 1);
+}
+
+#fxListView .list-cell {
+    -fx-padding: 10px 15px;
+    -fx-border-color: transparent transparent #f0f0f0 transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-background-color: transparent;
+}
+
+#fxListView .list-cell:filled:hover {
+    -fx-background-color: #f5f5f5;
+}
+
+#fxListView .list-cell:filled:selected {
+    -fx-background-color: #e3f2fd;
+    -fx-text-fill: #333;
+}
+
+
+#fxListView .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12px;
+}
+
+#fxListView .scroll-bar .thumb {
+    -fx-background-color: #c1c1c1;
+    -fx-background-radius: 6px;
+}
+
+#fxListView .scroll-bar .thumb:hover {
+    -fx-background-color: #a8a8a8;
+}
+
+
+#fxListView .placeholder .label {
+    -fx-text-fill: #999;
+    -fx-font-style: italic;
+}

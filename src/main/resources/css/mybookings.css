@@ -1,0 +1,50 @@
+.root{
+    -fx-background-color: #afafaf;
+}
+
+#fxBookingList {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 1);
+}
+
+#fxBookingList .list-cell {
+    -fx-padding: 10px 15px;
+    -fx-border-color: transparent transparent #f0f0f0 transparent;
+    -fx-border-width: 0 0 1px 0;
+    -fx-background-color: transparent;
+}
+
+#fxBookingList .list-cell:filled:hover {
+    -fx-background-color: #f5f5f5;
+}
+
+#fxBookingList .list-cell:filled:selected {
+    -fx-background-color: #e3f2fd;
+    -fx-text-fill: #333;
+}
+
+
+#fxBookingList .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12px;
+}
+
+#fxBookingList .scroll-bar .thumb {
+    -fx-background-color: #c1c1c1;
+    -fx-background-radius: 6px;
+}
+
+#fxBookingList .scroll-bar .thumb:hover {
+    -fx-background-color: #a8a8a8;
+}
+
+
+#fxBookingList .placeholder .label {
+    -fx-text-fill: #999;
+    -fx-font-style: italic;
+}

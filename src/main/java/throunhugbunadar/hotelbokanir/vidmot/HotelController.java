@@ -73,12 +73,13 @@ public class HotelController implements Initializable {
     @FXML
     public void onSearch(ActionEvent event) {
         fxErrorLabel.setText("");
-        int numRooms = Integer.parseInt(fxNumRooms.getText().trim());
         try {
-            assert numRooms >= 0;
-        } catch(Exception e) {
+            int number = Integer.parseInt(fxNumRooms.getText().trim());
+        } catch (NumberFormatException e) {
             fxErrorLabel.setText("Please provide the number of rooms as a non-negative integer");
-            return;
+        }
+        if(Integer.parseInt(fxNumRooms.getText().trim()) <= 0) {
+            fxErrorLabel.setText("Please provide the number of rooms as a non-negative integer");
         }
         if(fxCheckIn.getValue() == null || fxCheckOut.getValue() == null){
             fxErrorLabel.setText("Please select a check-in and check-out date");
@@ -93,14 +94,14 @@ public class HotelController implements Initializable {
 
             hotels.clear();
 
-            List<Hotel> listiLausHotel = HotelDB.findAvailableHotels(location, checkInDagur, checkOutDagur, pool, gym, bar, hotelName, numRooms);
+            List<Hotel> listiLausHotel = HotelDB.findAvailableHotels(location, checkInDagur, checkOutDagur, pool, gym, bar, hotelName, Integer.parseInt(fxNumRooms.getText().trim()));
             hotels.addAll(listiLausHotel);
 
             System.out.print("hotels found: "+listiLausHotel.size());
             fxListView.setItems(hotels);
         }
     }
-
+    @FXML
     public void fxOpenSignIn(ActionEvent event) {
         if (fxOpenSignIn.getText().equals("Sign-out")) {
             userCon.signOut();
@@ -124,9 +125,16 @@ public class HotelController implements Initializable {
             fxNameLabel.setDisable(false);
         }
     }
-
+    @FXML
     public void fxOpenBooking(){
         fxErrorLabel.setText("");
+
+        if (!userCon.isSignedIn()) {
+            fxErrorLabel.setText("You must sign in before booking.");
+            fxErrorLabel.setTextFill(Color.RED);
+            return;
+        }
+
         if(fxCheckIn.getValue() != null && fxCheckOut.getValue() != null && !fxNumRooms.getText().isEmpty() && fxListView.getSelectionModel().getSelectedItem() != null) {
             try {
                 Hotel selectedHotel = fxListView.getSelectionModel().getSelectedItem();
@@ -165,7 +173,7 @@ public class HotelController implements Initializable {
             }
         }
         else{
-            fxErrorLabel.setText("Before booking you must sign-in, select check-out and check-in dates, select a hotel and select the number of rooms needed");
+            fxErrorLabel.setText("Before booking you must sign-in, select check-out and check-in dates, select a hotel and select the number of rooms");
         }
     }
 
@@ -205,5 +213,4 @@ public class HotelController implements Initializable {
             e.printStackTrace();
         }
     }
-
 }

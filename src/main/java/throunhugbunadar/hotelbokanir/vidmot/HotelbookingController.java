@@ -137,8 +137,8 @@ public class HotelbookingController implements Initializable {
     }
 
     public void fxOpenBooking(){
-        // && fxCheckIn.getValue() != null && fxCheckOut.getValue() != null && fxNumberOfRooms.getText().isEmpty() && fxListView.getSelectionModel().getSelectedItem() == null
-        if(user != null) {
+
+        if(user != null && fxCheckIn.getValue() != null && fxCheckOut.getValue() != null && !fxNumberOfRooms.getText().isEmpty() && fxListView.getSelectionModel().getSelectedItem() != null) {
             try {
                 Hotel selectedHotel = fxListView.getSelectionModel().getSelectedItem();
 

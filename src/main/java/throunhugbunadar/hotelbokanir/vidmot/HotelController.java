@@ -9,15 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import throunhugbunadar.hotelbokanir.vidmot.BookingController;
 import throunhugbunadar.hotelbokanir.vidmot.MyBookingsController;
-import throunhugbunadar.hotelbokanir.vidmot.SignInInteractive;
 import throunhugbunadar.hotelbokanir.vinnsla.*;
 import throunhugbunadar.hotelbokanir.UserController;
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -33,8 +30,6 @@ public class HotelController implements Initializable {
     @FXML
     private Button fxOpenSignIn;
     @FXML
-    private VBox fxSearchResultBox;
-    @FXML
     private Button fxNameLabel;
     @FXML
     private Label fxErrorLabel;
@@ -46,22 +41,16 @@ public class HotelController implements Initializable {
     private CheckBox fxGym;
     @FXML
     private Button fxBookingsButton;
-    //@FXML
-    //private TextField fxNameOfhotel;
     @FXML
     private ComboBox<String> fxHotelName;
     @FXML
     private ComboBox<String> fxLocation;
-
     @FXML
     private ListView<Hotel> fxListView;
-    @FXML
-    private ListView<Booking> fxBookingList;
     @FXML
     private DatePicker fxCheckIn;
     @FXML
     private DatePicker fxCheckOut;
-    private User user;
     private ObservableList<Hotel> hotels = FXCollections.observableArrayList();
     private ObservableList<Booking> bookings = FXCollections.observableArrayList();
     private final String[] places = {"No preference","Reykjavik", "Selfoss", "Akureyri", "Egilsstadir", "Vik","Hvammstangi","Isafjordur"};
@@ -138,8 +127,7 @@ public class HotelController implements Initializable {
 
     public void fxOpenBooking(){
         fxErrorLabel.setText("");
-        // && fxCheckIn.getValue() != null && fxCheckOut.getValue() != null && fxNumberOfRooms.getText().isEmpty() && fxListView.getSelectionModel().getSelectedItem() == null
-        if(user != null) {
+        if(fxCheckIn.getValue() != null && fxCheckOut.getValue() != null && !fxNumRooms.getText().isEmpty() && fxListView.getSelectionModel().getSelectedItem() != null) {
             try {
                 Hotel selectedHotel = fxListView.getSelectionModel().getSelectedItem();
 
@@ -150,7 +138,7 @@ public class HotelController implements Initializable {
                 String hotelName = selectedHotel.getName();
                 String checkIn = fxCheckIn.getValue().toString();
                 String checkOut = fxCheckOut.getValue().toString();
-                String username = user.getUsername();
+                String username = userCon.getUser().getUsername();
                 int rooms = Integer.parseInt(fxNumRooms.getText());
                 int price = selectedHotel.getPrice();
 
@@ -168,7 +156,7 @@ public class HotelController implements Initializable {
                 Optional<ButtonType> result = dialog.showAndWait();
 
                 if (result.isPresent() && result.get() == ButtonType.OK) {
-                    BookingDB.addBooking(selectedHotel.getId(), user.getUserID(), checkIn, checkOut, rooms, hotelName, price);
+                    BookingDB.addBooking(selectedHotel.getId(), userCon.getUser().getUserID(), checkIn, checkOut, rooms, hotelName, price);
                     fxErrorLabel.setTextFill(Color.BLUE);
                     fxErrorLabel.setText("Your booking has been added");
                 }
@@ -202,7 +190,7 @@ public class HotelController implements Initializable {
 
             MyBookingsController controller = fxmlLoader.getController();
             BookingDB vinnsla = new BookingDB();
-            int userId = user.getUserID();
+            int userId = userCon.getUser().getUserID();
             List<Booking> listMyBookings = vinnsla.getBookings(userId);
             bookings.setAll(listMyBookings);
             controller.setBookingsList(bookings);

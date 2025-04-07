@@ -19,7 +19,7 @@ import java.util.List;
 public class HotelDB {
     public static List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut,
                                                   boolean pool, boolean gym, boolean bar, String nameOfHotel, int numOfRoomsRequested) {
-        List<Hotel> lausHotel = new ArrayList<>();
+        List<Hotel> availableHotel = new ArrayList<>();
 
         String sqlSkipun = """
         
@@ -55,7 +55,7 @@ public class HotelDB {
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
-                    lausHotel.add(new Hotel(
+                    availableHotel.add(new Hotel(
                             rs.getInt("id"),
                             rs.getString("name"),
                             rs.getString("location"),
@@ -70,6 +70,6 @@ public class HotelDB {
         } catch (SQLException e) {
             System.out.println("Ekki tókst að sækja laus hótel: " + e.getMessage());
         }
-        return lausHotel;
+        return availableHotel;
     }
 }

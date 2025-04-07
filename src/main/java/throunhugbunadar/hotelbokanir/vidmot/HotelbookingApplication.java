@@ -17,6 +17,7 @@ public class HotelbookingApplication extends Application {
         stage.setMinHeight(825);
         stage.setTitle("Hótelbókun!!");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

@@ -32,14 +32,6 @@ public Hotel(int id, String name, String location, int numberOfRooms, boolean po
         return name;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public int getNumberOfRooms() {
-        return numberOfRooms;
-    }
-
     public int getId() {
         return id;
     }
@@ -47,10 +39,6 @@ public Hotel(int id, String name, String location, int numberOfRooms, boolean po
     public int getPrice() {
     return price;
     }
-
-    public boolean hasPool() {return pool;}
-    public boolean hasGym() {return gym;}
-    public boolean hasBar() {return bar;}
 
     public String toString(){
         String hotelString = name + " (" + location + ")" + "\nPrice per night " + price + "\n";

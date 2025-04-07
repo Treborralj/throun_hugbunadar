@@ -37,8 +37,7 @@ public class SignInInteractive implements Initializable {
                 if (newValue) {
                     fxEmailLabel.setVisible(true);
                     fxEmail.setVisible(true);
-                }
-                else {
+                } else {
                     fxEmailLabel.setVisible(false);
                     fxEmail.setVisible(false);
                 }
@@ -58,10 +57,12 @@ public class SignInInteractive implements Initializable {
     public String getUserName() {
         return fxUsername.getText().trim();
     }
+
     public String getPassword() {
         return fxPassword.getText().trim();
     }
-    public String getEmail(){
+
+    public String getEmail() {
         return fxEmail.getText().trim();
     }
 }

@@ -9,8 +9,10 @@ import throunhugbunadar.hotelbokanir.vidmot.ProfileInteractive;
 import throunhugbunadar.hotelbokanir.vidmot.SignInInteractive;
 import throunhugbunadar.hotelbokanir.vinnsla.User;
 import throunhugbunadar.hotelbokanir.vinnsla.UserDB;
+
 import java.io.IOException;
 import java.util.Optional;
+
 import throunhugbunadar.hotelbokanir.HotelController;
 
 /******************************************************************************
@@ -24,20 +26,24 @@ public class UserController {
     private Stage profileStage;
     private HotelController hotelCon;
 
-    //public String getUserName() {return fxName.getText().trim();}
-    //public String getPassword() {return fxPassword.getText();}
-    //public String getEmail(){return fxEmail.getText().trim();}
-    public User getUser() {return user;}
-    public boolean isSignedIn() {return user != null;}
+    public User getUser() {
+        return user;
+    }
+
+    public boolean isSignedIn() {
+        return user != null;
+    }
 
     public void signOut() {
         user = null;
         hotelCon.signout();
     }
 
-    public UserController(HotelController h){
+    public UserController(HotelController h) {
         hotelCon = h;
-    };
+    }
+
+    ;
 
     public boolean signIn() throws IOException {
         try {
@@ -51,34 +57,35 @@ public class UserController {
             Button button = (Button) dialog.getDialogPane().lookupButton(ButtonType.OK);
             button.addEventFilter(ActionEvent.ACTION, event -> {
                 if (c.getUserName().isEmpty()) {
-                    if (c.signingUp()) {c.setAlert("Please choose a username");}
-                    else {c.setAlert("Please enter your username");}
+                    if (c.signingUp()) {
+                        c.setAlert("Please choose a username");
+                    } else {
+                        c.setAlert("Please enter your username");
+                    }
                     event.consume();
-                }
-                else if (c.getPassword().isEmpty()) {
-                    if (c.signingUp()) {c.setAlert("Please choose a password");}
-                    else {c.setAlert("Please enter your password");}
+                } else if (c.getPassword().isEmpty()) {
+                    if (c.signingUp()) {
+                        c.setAlert("Please choose a password");
+                    } else {
+                        c.setAlert("Please enter your password");
+                    }
                     event.consume();
-                }
-                else if (c.signingUp()) {
+                } else if (c.signingUp()) {
                     if (c.getEmail().isEmpty()) {
                         c.setAlert("Please enter your email-address");
                         event.consume();
-                    }
-                    else if (UserDB.nameTaken(c.getUserName())) {
+                    } else if (UserDB.nameTaken(c.getUserName())) {
                         c.setAlert("This username already exists, please choose a different one");
                         event.consume();
                     }
-                }
-                else if (!c.signingUp()) {
+                } else if (!c.signingUp()) {
                     if (!UserDB.nameTaken(c.getUserName())) {
                         c.setAlert("This username is not associated with any account. If you wish to create a new account, please indicate it by checking the box.");
                         event.consume();
-                    }
-                    else {
+                    } else {
                         boolean verified = false;
                         try {
-                            verified = UserDB.verifyPassword(c.getUserName(),c.getPassword());
+                            verified = UserDB.verifyPassword(c.getUserName(), c.getPassword());
                         } catch (Exception e) {
                             System.out.println(e.getMessage());
                             c.setAlert("Could not verify password");
@@ -99,12 +106,14 @@ public class UserController {
                 String password = c.getPassword();
                 if (c.signingUp()) {
                     String email = c.getEmail();
-                    boolean userAdded = UserDB.addUser(username,email,password);
-                    if (!userAdded) {return false;}
+                    boolean userAdded = UserDB.addUser(username, email, password);
+                    if (!userAdded) {
+                        return false;
+                    }
                 }
-                user = UserDB.findUser(username,password);
+                user = UserDB.findUser(username, password);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
         }
@@ -126,20 +135,19 @@ public class UserController {
                 hotelCon.profileButtonDisabled(false);
             });
             profileStage.show();
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
 
     public void changeEmail(ProfileInteractive p, String newEmail) {
-        assert(!newEmail.isEmpty());
+        assert (!newEmail.isEmpty());
         User userTemp = UserDB.changeEmail(user.getUsername(), user.getPassword(), newEmail.trim());
         if (userTemp == null) {
             p.redAlert(true);
             p.setAlert("Could not change email");
-        }
-        else {
+        } else {
             p.setEmail(newEmail);
             p.redAlert(false);
             p.setAlert("Your e-mail address has been changed");
@@ -148,13 +156,12 @@ public class UserController {
     }
 
     public void changePassword(ProfileInteractive p, String newPassword) {
-        assert(!newPassword.isEmpty());
+        assert (!newPassword.isEmpty());
         User userTemp = UserDB.changePassword(user.getUsername(), user.getPassword(), newPassword.trim());
         if (userTemp == null) {
             p.redAlert(true);
             p.setAlert("Could not change password");
-        }
-        else {
+        } else {
             p.redAlert(false);
             p.setAlert("Your password has been changed");
             user = userTemp;
@@ -165,8 +172,8 @@ public class UserController {
         boolean success = UserDB.deleteAccount(user);
         if (success) {
             profileStage.close();
-            signOut();}
-        else {
+            signOut();
+        } else {
             p.redAlert(true);
             p.setAlert("Could not delete account");
         }

@@ -9,17 +9,17 @@ import java.sql.*;
  *
  *****************************************************************************/
 public class ConnectionToDB {
-    private static final String gagnasafnsURL =
+    private static final String dbURL =
             "jdbc:sqlite:src/main/resources/hotel_bookin.db";
 
     public static Connection connect() throws SQLException {
         try{
             Class.forName("org.sqlite.JDBC");
-            return DriverManager.getConnection(gagnasafnsURL);
+            return DriverManager.getConnection(dbURL);
         } catch(ClassNotFoundException e){
-            System.out.println("SQLite JDBC driver fannst EKKI: " + e.getMessage());
+            System.out.println("SQLite JDBC driver was not found: " + e.getMessage());
         }catch (SQLException e) {
-            System.out.println("Tenging við gagnagrunn MISTÓKST: " + e.getMessage());
+            System.out.println("Connection to database failed: " + e.getMessage());
         }
         return null;
     }

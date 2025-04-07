@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<Pane fx:id="myBookingPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.MyBookingsController">
+<Pane fx:id="myBookingPane" maxHeight="-Infinity" stylesheets="@../../css/mybookings.css" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.MyBookingsController">
    <children>
       <ListView fx:id="fxBookingList" prefHeight="400.0" prefWidth="600.0" />
    </children>

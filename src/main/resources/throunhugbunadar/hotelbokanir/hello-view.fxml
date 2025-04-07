@@ -11,7 +11,7 @@
       </padding>
       <children>
          <HBox alignment="BASELINE_RIGHT" prefHeight="42.0" prefWidth="200.0" spacing="53.0">
-         <Button fx:id="fxBookingsButton" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#fxMyBookings" prefHeight="26.0" prefWidth="95.0" text="My Bookings" textAlignment="RIGHT" visible="false"/>
+         <Button fx:id="fxBookingsButton" alignment="BASELINE_CENTER" mnemonicParsing="false" onAction="#fxMyBookings" prefHeight="26.0" prefWidth="200.0" text="My Bookings" textAlignment="RIGHT" visible="false"/>
          </HBox>
          <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0" spacing="53.0">
             <children>

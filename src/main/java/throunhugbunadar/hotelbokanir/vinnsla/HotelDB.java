@@ -12,11 +12,12 @@ import java.util.List;
 /******************************************************************************
  * @author Róbert A. Jack
  * Tölvupóstur: ral9@hi.is
- * Lýsing : 
+ * Lýsing :
  *
  *****************************************************************************/
 
 public class HotelDB {
+
     public List<Hotel> findAvailableHotels(String location, String checkIn, String checkOut,
                                            boolean pool, boolean gym, boolean bar, String nameOfHotel) {
         List<Hotel> lausHotel = new ArrayList<>();
@@ -60,7 +61,8 @@ public class HotelDB {
                             rs.getInt("num_rooms"),
                             rs.getBoolean("pool"),
                             rs.getBoolean("gym"),
-                            rs.getBoolean("bar")
+                            rs.getBoolean("bar"),
+                            rs.getInt("price")
                     ));
                 }
             }

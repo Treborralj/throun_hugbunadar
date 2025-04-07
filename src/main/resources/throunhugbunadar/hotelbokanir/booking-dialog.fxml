@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<DialogPane prefHeight="255.0" prefWidth="290.0" stylesheets="@../../css/booking-dialog.css" xmlns="http://javafx.com/javafx/17.0.2-ea"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.BookingController">
+<DialogPane prefHeight="255.0" prefWidth="290.0" stylesheets="@../../css/booking-dialog.css" xmlns="http://javafx.com/javafx/17.0.12"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.BookingController">
    <header>
       <VBox alignment="CENTER" prefHeight="268.0" prefWidth="290.0" spacing="4.0">
          <children>
@@ -48,6 +48,15 @@
                <children>
                   <Label id = "NumberOfRoomsLabelCSS" text="Number of rooms:" />
                   <Label fx:id="fxNumberOfRooms" text="Label" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+               <children>
+                  <Label text="Total price:" />
+                  <Label fx:id="fxTotalPrice" text="Label" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />

@@ -18,6 +18,22 @@
       -fx-padding: 8px 16px;
   }
 
+#fxBookingsButton {
+    -fx-text-fill: black;
+    -fx-font-family: "Arial";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-font-style: italic;
+    -fx-background-color: #bfbfbf;
+    -fx-background-radius: 5px;
+    -fx-border-color: #595959;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-pref-width: 120px;
+    -fx-pref-height: 40px;
+    -fx-padding: 8px 16px;
+}
+
 #fxNameLabel{
     -fx-text-fill: black;
     -fx-font-family: "italic";

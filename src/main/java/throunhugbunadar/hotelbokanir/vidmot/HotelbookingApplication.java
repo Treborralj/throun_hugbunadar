@@ -14,9 +14,10 @@ public class HotelbookingApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 400, 600);
         scene.getStylesheets().add(getClass().getResource("/css/hello-view.css").toExternalForm());
         stage.setMinWidth(563);
-        stage.setMinHeight(800);
+        stage.setMinHeight(825);
         stage.setTitle("Hótelbókun!!");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

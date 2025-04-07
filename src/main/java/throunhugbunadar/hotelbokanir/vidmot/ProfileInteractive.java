@@ -4,9 +4,9 @@ import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import throunhugbunadar.hotelbokanir.UserController;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.Optional;
@@ -30,10 +30,13 @@ public class ProfileInteractive implements Initializable {
 
     private UserController userCon = null;
 
-    public boolean hasUserCon() {return userCon != null;}
-    public void setUsername(String name) {fxUsername.setText(name);}
-    public void setEmail(String email) {fxEmail.setText(email);}
-    public void setAlert(String s) {fxAlert.setText(s);}
+    public void setEmail(String email) {
+        fxEmail.setText(email);
+    }
+
+    public void setAlert(String s) {
+        fxAlert.setText(s);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -47,8 +50,11 @@ public class ProfileInteractive implements Initializable {
     }
 
     public void redAlert(boolean b) {
-        if (b) {fxAlert.setTextFill(Color.RED);}
-        else {fxAlert.setTextFill(Color.BLUE);}
+        if (b) {
+            fxAlert.setTextFill(Color.RED);
+        } else {
+            fxAlert.setTextFill(Color.BLUE);
+        }
     }
 
     public void setUserCon(UserController c) {

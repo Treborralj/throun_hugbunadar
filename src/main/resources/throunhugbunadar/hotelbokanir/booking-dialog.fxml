@@ -3,11 +3,20 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <DialogPane prefHeight="255.0" prefWidth="290.0" stylesheets="@../../css/booking-dialog.css" xmlns="http://javafx.com/javafx/17.0.12"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.BookingController">
    <header>
       <VBox alignment="CENTER" prefHeight="268.0" prefWidth="290.0" spacing="4.0">
          <children>
+            <Label alignment="CENTER" text="Please ensure your booking info is correct:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <padding>
+                  <Insets bottom="3.0" top="3.0" />
+               </padding>
+            </Label>
             <VBox alignment="CENTER" prefHeight="0.0" prefWidth="290.0" spacing="2.0">
                <children>
                   <Label id = "NameLabelCSS" text="Name:" />

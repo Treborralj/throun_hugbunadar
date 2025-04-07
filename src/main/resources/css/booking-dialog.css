@@ -1,0 +1,26 @@
+.root{
+    -fx-background-color: #afafaf;
+}
+
+#CheckOutDateLabelCSS, #CheckInDateLabelCSS, #HotelNameLabelCSS, #NumberOfRoomsLabelCSS{
+         -fx-font-size: 20px;
+         -fx-font-weight: bold;
+         -fx-border-color: transparent transparent #000000 transparent;
+         -fx-border-width: 0 0 2px 0;
+         -fx-padding: 0 0 3px 0;
+  }
+  .button{
+  -fx-text-fill: black;
+        -fx-font-family: "Arial";
+        -fx-font-size: 10px;
+        -fx-font-weight: bold;
+        -fx-font-style: italic;
+        -fx-background-color: #bfbfbf;
+        -fx-background-radius: 5px;
+        -fx-border-color: #595959;
+        -fx-border-width: 2px;
+        -fx-border-radius: 5px;
+        -fx-pref-width: 80px;
+        -fx-pref-height: 40px;
+        -fx-padding: 8px 16px;
+  }

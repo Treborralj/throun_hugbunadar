@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
 
-<DialogPane prefHeight="213.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.SignInController">
+<DialogPane prefHeight="403.0" prefWidth="360.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.SignInInteractive">
    <buttonTypes>
       <ButtonType fx:constant="OK" />
       <ButtonType fx:constant="CANCEL" />
    </buttonTypes>
    <content>
-      <VBox prefHeight="513.0" prefWidth="460.0">
+      <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <Label text="Name" />
-            <TextField fx:id="fxName" />
+            <CheckBox fx:id="fxNewAccount" mnemonicParsing="false" text="Create a new account">
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </CheckBox>
+            <Label prefHeight="18.0" prefWidth="112.0" text="Username" />
+            <TextField fx:id="fxUsername" />
             <Label text="Password" />
             <TextField fx:id="fxPassword" />
-            <Label text="E-mail" />
+            <Label fx:id="fxEmailLabel" text="E-mail" />
             <TextField fx:id="fxEmail" />
+            <Label fx:id="fxAlert" prefHeight="70.0" prefWidth="331.0" textFill="#c71818" wrapText="true">
+               <VBox.margin>
+                  <Insets top="25.0" />
+               </VBox.margin>
+            </Label>
          </children>
       </VBox>
    </content>

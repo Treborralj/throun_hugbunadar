@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import throunhugbunadar.hotelbokanir.vidmot.BookingController;
 import throunhugbunadar.hotelbokanir.vidmot.SignInController;
 import throunhugbunadar.hotelbokanir.vinnsla.*;
@@ -161,6 +162,8 @@ public class HotelbookingController implements Initializable {
 
                 if (result.isPresent() && result.get() == ButtonType.OK) {
                     BookingDB.addBooking(selectedHotel.getId(), user.getUserID(), checkIn, checkOut, rooms);
+                    fxErrorLabel.setTextFill(Color.BLUE);
+                    fxErrorLabel.setText("Your booking has been added");
                 }
             } catch (IOException e) {
                 e.printStackTrace();

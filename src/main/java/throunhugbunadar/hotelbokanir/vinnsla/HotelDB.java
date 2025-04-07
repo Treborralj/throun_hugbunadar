@@ -69,7 +69,6 @@ public class HotelDB {
         } catch (SQLException e) {
             System.out.println("Ekki tókst að sækja laus hótel: " + e.getMessage());
         }
-
         return lausHotel;
     }
 }

@@ -23,6 +23,7 @@ public class UserDB {
             pstmt.setString(3, password);
 
             radir = pstmt.executeUpdate();
+            conn.close();
         } catch (SQLException e) {
             System.out.println("Error inserting user into table: " + e.getMessage());
         }
@@ -45,7 +46,7 @@ public class UserDB {
                     String uname = rs.getString("username");
                     String mail = rs.getString("email");
                     String pass = rs.getString("password");
-
+                    conn.close();
                     return new User(uname, mail, pass, userId);
                 }
             }
@@ -61,8 +62,8 @@ public class UserDB {
         try (Connection conn = ConnectionToDB.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, username);
-            pstmt.setString(2, password);
+            pstmt.setString(1, username.trim());
+            pstmt.setString(2, password.trim());
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -70,11 +71,11 @@ public class UserDB {
                     String uname = rs.getString("username");
                     String mail = rs.getString("email");
                     String pass = rs.getString("password");
-
+                    conn.close();
                     return new User(uname, mail, pass, userId);
                 }
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             System.out.println("Error finding user: " + e.getMessage());
         }
         return null;
@@ -87,49 +88,56 @@ public class UserDB {
         try (Connection conn = ConnectionToDB.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, name);
+            pstmt.setString(1, name.trim());
             rs = pstmt.executeQuery();
             if (rs.next()) {
                 radir = rs.getInt(1);
             }
+            conn.close();
         } catch (SQLException e) {
             System.out.println("Error inserting user into table: " + e.getMessage());
         }
         return radir > 0;
     }
 
-    public static boolean changeEmail(String username, String newEmail) {
-        String sql = "UPDATE users SET email = ? WHERE username = ?;";
+    public static User changeEmail(String username, String password, String newEmail) {
+        String sql = "UPDATE users SET email = ? WHERE username = ? AND password = ?";
 
         try (Connection conn = ConnectionToDB.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, newEmail);
-            pstmt.setString(2, username);
-            pstmt.executeUpdate();
+            pstmt.setString(1, newEmail.trim());
+            pstmt.setString(2, username.trim());
+            pstmt.setString(3, password.trim());
+            //pstmt.executeUpdate();
+            int i = pstmt.executeUpdate();
+            System.out.println("changed: " + i);
+            conn.close();
 
         } catch (SQLException e) {
             System.out.println("Error changing email: " + e.getMessage());
-            return false;
+            return null;
         }
-        return true;
+        return findUser(username.trim(), password.trim());
     }
 
-    public static boolean changePassword(String username, String newPassword) {
-        String sql = "UPDATE users SET password = ? WHERE username = ?;";
+    public static User changePassword(String username, String oldPassword, String newPassword) {
+        String sql = "UPDATE users SET password = ? WHERE username = ? AND password = ?;";
 
         try (Connection conn = ConnectionToDB.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, newPassword);
-            pstmt.setString(2, username);
+            pstmt.setString(1, newPassword.trim());
+            pstmt.setString(2, username.trim());
+            pstmt.setString(3, oldPassword.trim());
             pstmt.executeUpdate();
+            conn.close();
 
         } catch (SQLException e) {
             System.out.println("Error changing password: " + e.getMessage());
-            return false;
+            return null;
         }
-        return true;
+        return findUser(username.trim(),newPassword.trim());
     }
 
     public static boolean verifyPassword(String username,String password) throws Exception {
@@ -144,6 +152,7 @@ public class UserDB {
             if (rs.next()) {
                 pw = rs.getString("password");
             }
+            conn.close();
         } catch (SQLException e) {
             throw new Exception("Error verifying password: " + e.getMessage());
         }
@@ -161,6 +170,7 @@ public class UserDB {
 
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
+            conn.close();
 
         } catch (SQLException e) {
             System.out.println("Error deleting account: " + e.getMessage());

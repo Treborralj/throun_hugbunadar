@@ -5,13 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
-import org.w3c.dom.events.MouseEvent;
 import throunhugbunadar.hotelbokanir.vidmot.BookingController;
-import throunhugbunadar.hotelbokanir.vidmot.SignInController;
 import throunhugbunadar.hotelbokanir.vinnsla.*;
 import throunhugbunadar.hotelbokanir.UserController;
 
@@ -21,7 +18,7 @@ import java.util.Optional;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HotelbookingController implements Initializable {
+public class HotelController implements Initializable {
     @FXML
     private TextField fxNumRooms;
     @FXML

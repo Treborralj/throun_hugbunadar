@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SignInController implements Initializable {
+public class SignInInteractive implements Initializable {
     @FXML
     private Label fxAlert;
     @FXML

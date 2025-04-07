@@ -1,25 +1,18 @@
 package throunhugbunadar.hotelbokanir.vidmot;
 
 import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import throunhugbunadar.hotelbokanir.UserController;
-import throunhugbunadar.hotelbokanir.vinnsla.BookingDB;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ProfileController implements Initializable {
+public class ProfileInteractive implements Initializable {
     @FXML
     private Label fxUsername;
     @FXML
@@ -51,7 +44,6 @@ public class ProfileController implements Initializable {
         fxPasswordButton.disableProperty().bind(Bindings.createBooleanBinding(
                 () -> fxNewPassword.getText().trim().isEmpty(),
                 fxNewPassword.textProperty()));
-
     }
 
     public void redAlert(boolean b) {
@@ -68,7 +60,8 @@ public class ProfileController implements Initializable {
     public void fxChangeEmail(MouseEvent event) {
         fxAlert.setText("");
         if (userCon == null) {
-            System.out.println("The ProfileController must be associated with a UserController");
+            System.out.println("The ProfileInteractive must be associated with a UserController");
+            return;
         }
         String newEmail = fxNewEmail.getText().trim();
         userCon.changeEmail(this, newEmail);
@@ -78,7 +71,8 @@ public class ProfileController implements Initializable {
     public void fxChangePassword(MouseEvent event) {
         fxAlert.setText("");
         if (userCon == null) {
-            System.out.println("The ProfileController must be associated with a UserController");
+            System.out.println("The ProfileInteractive must be associated with a UserController");
+            return;
         }
         String newPassword = fxNewPassword.getText().trim();
         userCon.changePassword(this, newPassword);
@@ -87,7 +81,7 @@ public class ProfileController implements Initializable {
     public void fxDeleteAccount(MouseEvent event) {
         fxAlert.setText("");
         if (userCon == null) {
-            System.out.println("The ProfileController must be associated with a UserController");
+            System.out.println("The ProfileInteractive must be associated with a UserController");
         }
         boolean confirmed = false;
         try {

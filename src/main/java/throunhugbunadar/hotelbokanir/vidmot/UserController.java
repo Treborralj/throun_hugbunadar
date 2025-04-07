@@ -1,19 +1,17 @@
 package throunhugbunadar.hotelbokanir;
 
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import throunhugbunadar.hotelbokanir.vidmot.BookingController;
-import throunhugbunadar.hotelbokanir.vidmot.ProfileController;
-import throunhugbunadar.hotelbokanir.vidmot.SignInController;
+import throunhugbunadar.hotelbokanir.vidmot.ProfileInteractive;
+import throunhugbunadar.hotelbokanir.vidmot.SignInInteractive;
 import throunhugbunadar.hotelbokanir.vinnsla.User;
 import throunhugbunadar.hotelbokanir.vinnsla.UserDB;
 import java.io.IOException;
 import java.util.Optional;
+import throunhugbunadar.hotelbokanir.HotelController;
 
 /******************************************************************************
  * @author Róbert A. Jack
@@ -24,7 +22,7 @@ import java.util.Optional;
 public class UserController {
     private User user;
     private Stage profileStage;
-    private throunhugbunadar.hotelbokanir.HotelbookingController hotelCon;
+    private HotelController hotelCon;
 
     //public String getUserName() {return fxName.getText().trim();}
     //public String getPassword() {return fxPassword.getText();}
@@ -37,8 +35,7 @@ public class UserController {
         hotelCon.signout();
     }
 
-    public UserController(throunhugbunadar.hotelbokanir.HotelbookingController h){
-        user = null;
+    public UserController(HotelController h){
         hotelCon = h;
     };
 
@@ -49,7 +46,7 @@ public class UserController {
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setTitle("Sign in");
             dialog.setDialogPane(signUpDialogPane);
-            SignInController c = fxmlLoader.getController();
+            SignInInteractive c = fxmlLoader.getController();
 
             Button button = (Button) dialog.getDialogPane().lookupButton(ButtonType.OK);
             button.addEventFilter(ActionEvent.ACTION, event -> {
@@ -119,7 +116,7 @@ public class UserController {
             profileStage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(throunhugbunadar.hotelbokanir.HotelbookingApplication.class.getResource("user-profile.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 400, 600);
-            ProfileController p = fxmlLoader.getController();
+            ProfileInteractive p = fxmlLoader.getController();
             p.setUserCon(this);
             profileStage.setWidth(266);
             profileStage.setHeight(360);
@@ -135,31 +132,36 @@ public class UserController {
         }
     }
 
-    public void changeEmail(ProfileController p, String newEmail) {
+    public void changeEmail(ProfileInteractive p, String newEmail) {
         assert(!newEmail.isEmpty());
-        boolean success = UserDB.changeEmail(user.getUsername(), newEmail.trim());
-        if (!success) {
+        User userTemp = UserDB.changeEmail(user.getUsername(), user.getPassword(), newEmail.trim());
+        if (userTemp == null) {
             p.redAlert(true);
-            p.setAlert("Could not change email");}
+            p.setAlert("Could not change email");
+        }
         else {
             p.setEmail(newEmail);
             p.redAlert(false);
             p.setAlert("Your e-mail address has been changed");
+            user = userTemp;
         }
     }
 
-    public void changePassword(ProfileController p, String newPassword) {
+    public void changePassword(ProfileInteractive p, String newPassword) {
         assert(!newPassword.isEmpty());
-        boolean success = UserDB.changePassword(user.getUsername(), newPassword.trim());
-        if (!success) {
+        User userTemp = UserDB.changePassword(user.getUsername(), user.getPassword(), newPassword.trim());
+        if (userTemp == null) {
             p.redAlert(true);
-            p.setAlert("Could not change password");}
+            p.setAlert("Could not change password");
+        }
         else {
             p.redAlert(false);
-            p.setAlert("Your password has been changed");}
+            p.setAlert("Your password has been changed");
+            user = userTemp;
+        }
     }
 
-    public void deleteAccount(ProfileController p) {
+    public void deleteAccount(ProfileInteractive p) {
         boolean success = UserDB.deleteAccount(user);
         if (success) {
             profileStage.close();

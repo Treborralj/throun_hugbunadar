@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import throunhugbunadar.hotelbokanir.vidmot.BookingController;
 import throunhugbunadar.hotelbokanir.vidmot.MyBookingsController;
 import throunhugbunadar.hotelbokanir.vidmot.SignInInteractive;
@@ -83,9 +84,8 @@ public class HotelController implements Initializable {
     @FXML
     public void onSearch(ActionEvent event) {
         fxErrorLabel.setText("");
-        int numRooms;
+        int numRooms = Integer.parseInt(fxNumRooms.getText().trim());
         try {
-            numRooms = Integer.parseInt(fxNumRooms.getText().trim());
             assert numRooms >= 0;
         } catch(Exception e) {
             fxErrorLabel.setText("Please provide the number of rooms as a non-negative integer");
@@ -104,7 +104,7 @@ public class HotelController implements Initializable {
 
             hotels.clear();
 
-            List<Hotel> listiLausHotel = HotelDB.findAvailableHotels(location,checkInDagur, checkOutDagur, pool, gym, bar, hotelName);
+            List<Hotel> listiLausHotel = HotelDB.findAvailableHotels(location, checkInDagur, checkOutDagur, pool, gym, bar, hotelName, numRooms);
             hotels.addAll(listiLausHotel);
 
             System.out.print("hotels found: "+listiLausHotel.size());

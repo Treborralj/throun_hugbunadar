@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbookingController">
+<HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="759.0" prefWidth="563.0" stylesheets="@../../css/hello-view.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.HotelbookingController">
    <VBox alignment="CENTER" prefHeight="759.0" prefWidth="246.0" spacing="13.0">
       <padding>
          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -19,15 +19,15 @@
                <Insets />
             </VBox.margin>
          </HBox>
-         <Label text="Search available hotels" />
+         <Label id="SearchLabelCSS" text="Search available hotels" />
          <Label />
-         <Label prefHeight="18.0" prefWidth="197.0" text="Time of booking:" />
-         <Label text="Check-in" />
+         <Label id="TimeOfBookingCSS" prefHeight="18.0" prefWidth="197.0" text="Time of booking:" />
+         <Label id = "CheckInLabelCSS" text="Check-in" />
          <DatePicker fx:id="fxCheckIn" />
-         <Label text="Check-out" />
+         <Label id = "CheckOutLabelCSS" text="Check-out" />
          <DatePicker fx:id="fxCheckOut" />
          <Label prefHeight="7.0" prefWidth="0.0" />
-         <Label prefHeight="18.0" prefWidth="206.0" text="How many rooms do you need?" />
+         <Label id = "NumberOfRoomsLabelCSS" prefHeight="18.0" prefWidth="206.0" text="How many rooms do you need?" />
          <TextField fx:id="fxNumberOfRooms" />
          <Label />
          <Label prefHeight="18.0" prefWidth="193.0" text="Optional filters:" />
@@ -47,7 +47,7 @@
             </VBox.margin>
          </HBox>
          <Label fx:id="fxErrorLabel" minHeight="-Infinity" minWidth="-Infinity" prefHeight="64.0" prefWidth="206.0" textFill="#a60b0b" wrapText="true" />
-         <Button mnemonicParsing="false" onAction="#onSearch" text="Search" />
+         <Button id = "SearchButtonCSS" mnemonicParsing="false" onAction="#onSearch" text="Search" />
       </children>
    </VBox>
    <VBox fx:id="fxSearchResultBox" prefHeight="759.0" prefWidth="303.0">

@@ -13,9 +13,10 @@ private int id;
 private boolean pool;
 private boolean gym;
 private boolean bar;
+private int price;
 
 
-public Hotel(int id, String name, String location, int numberOfRooms, boolean pool, boolean gym, boolean bar){
+public Hotel(int id, String name, String location, int numberOfRooms, boolean pool, boolean gym, boolean bar, int price){
 
     this.id = id;
     this.name = name;
@@ -24,6 +25,7 @@ public Hotel(int id, String name, String location, int numberOfRooms, boolean po
     this.pool = pool;
     this.gym = gym;
     this.bar = bar;
+    this.price = price;
 }
 
     public String getName() {
@@ -42,12 +44,16 @@ public Hotel(int id, String name, String location, int numberOfRooms, boolean po
         return id;
     }
 
+    public int getPrice() {
+    return price;
+    }
+
     public boolean hasPool() {return pool;}
     public boolean hasGym() {return gym;}
     public boolean hasBar() {return bar;}
 
     public String toString(){
-        String hotelString = name + " (" + location + ")" + " \n";
+        String hotelString = name + " (" + location + ")" + "\nPrice per night " + price + "\n";
         if (pool) {
             hotelString = hotelString + "Pool";
             if (gym || bar) hotelString = hotelString + ", ";}
@@ -56,6 +62,7 @@ public Hotel(int id, String name, String location, int numberOfRooms, boolean po
             if (bar) hotelString = hotelString + ", ";
         }
         if (bar) hotelString = hotelString + "Bar";
+
         return hotelString;
     }
 }

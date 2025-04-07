@@ -1,8 +1,8 @@
 package throunhugbunadar.hotelbokanir.vinnsla;
 
 /******************************************************************************
- * @author Róbert A. Jack
- * Tölvupóstur: ral9@hi.is
+ * @author
+ * Tölvupóstur:
  * Lýsing :
  *
  *****************************************************************************/
@@ -13,14 +13,18 @@ public class Booking {
     private final String checkIn;
     private final String checkOut;
     private final int numberOfRooms;
+    private final String hotelName;
+    private final int totalPrice;
 
-    public Booking(int bookingId, int hotelId, int userId, String checkIn, String checkOut, int numberOfRooms){
+    public Booking(int bookingId, int hotelId, int userId, String checkIn, String checkOut, int numberOfRooms, String hotelName, int totalPrice) {
         this.bookingId = bookingId;
         this.userId = userId;
         this.hotelId = hotelId;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.numberOfRooms = numberOfRooms;
+        this.hotelName = hotelName;
+        this.totalPrice = totalPrice;
     }
 
     public int getUserId() {
@@ -43,8 +47,16 @@ public class Booking {
         return numberOfRooms;
     }
 
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public int getTotalPrice() {
+        return totalPrice;
+    }
+
     @Override
     public String toString() {
-        return "You have booked " + numberOfRooms + " room/s " + " from " + checkIn + " to " + checkOut;
+        return "You have booked " + numberOfRooms + " room/s at " + hotelName + " from " + checkIn + " to " + checkOut;
     }
 }

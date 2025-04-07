@@ -1,5 +1,8 @@
 package throunhugbunadar.hotelbokanir.vinnsla;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +14,8 @@ import java.util.List;
  *
  *****************************************************************************/
 public class BookingDB {
-    public static void addBooking(int hotelId, int userID, String checkIn, String checkOut, int numberOfRooms) {
-        String sql = "INSERT INTO bookings (hotel_id, user_id, check_in, check_out, rooms_booked) VALUES (?, ?, ?, ?, ?)";
+    public static void addBooking(int hotelId, int userID, String checkIn, String checkOut, int numberOfRooms, String hotelName, int price) {
+        String sql = "INSERT INTO bookings (hotel_id, user_id, check_in, check_out, rooms_booked, hotel_name, price) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = ConnectionToDB.connect();
              Statement stmt = conn.createStatement();
@@ -32,6 +35,8 @@ public class BookingDB {
             pstmt.setString(3, checkIn);
             pstmt.setString(4, checkOut);
             pstmt.setInt(5, numberOfRooms);
+            pstmt.setString(6, hotelName);
+            pstmt.setInt(7, price);
 
             int radir = pstmt.executeUpdate();
             if (radir > 0) {
@@ -64,8 +69,10 @@ public class BookingDB {
                 String checkIn = rs.getString("check_in");
                 String checkOut = rs.getString("check_out");
                 int roomsBooked = rs.getInt("rooms_booked");
+                String hotelName = rs.getString("hotel_name");
+                int price = rs.getInt("price");
 
-                Booking booking = new Booking(bookingId, hotelId, userID, checkIn, checkOut, roomsBooked);
+                Booking booking = new Booking(bookingId, hotelId, userID, checkIn, checkOut, roomsBooked, hotelName, price);
                 bookings.add(booking);
             }
 

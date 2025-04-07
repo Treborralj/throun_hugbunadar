@@ -17,6 +17,9 @@ import throunhugbunadar.hotelbokanir.vidmot.SignInController;
 import throunhugbunadar.hotelbokanir.vinnsla.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import java.net.URL;
@@ -162,8 +165,15 @@ public class HotelbookingController implements Initializable {
                 String checkOut = fxCheckOut.getValue().toString();
                 String username = user.getUsername();
                 int rooms = Integer.parseInt(fxNumberOfRooms.getText());
+                int price = selectedHotel.getPrice();
 
-                controller.setBookingInfo(hotelName, checkIn, checkOut, username, rooms);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                LocalDate checkInDate = LocalDate.parse(checkIn, formatter);
+                LocalDate checkOutDate = LocalDate.parse(checkOut, formatter);
+                int nights = (int) ChronoUnit.DAYS.between(checkInDate, checkOutDate);
+                int totalPrice = price*nights*rooms;
+
+                controller.setBookingInfo(hotelName, checkIn, checkOut, username, rooms, totalPrice);
 
                 Dialog<ButtonType> dialog = new Dialog<>();
                 dialog.setTitle("Confirm info");
@@ -171,7 +181,7 @@ public class HotelbookingController implements Initializable {
                 Optional<ButtonType> result = dialog.showAndWait();
 
                 if (result.isPresent() && result.get() == ButtonType.OK) {
-                    BookingDB.addBooking(selectedHotel.getId(), user.getUserID(), checkIn, checkOut, rooms);
+                    BookingDB.addBooking(selectedHotel.getId(), user.getUserID(), checkIn, checkOut, rooms, hotelName, price);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

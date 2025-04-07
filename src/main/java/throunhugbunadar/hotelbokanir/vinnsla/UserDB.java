@@ -23,7 +23,6 @@ public class UserDB {
             pstmt.setString(3, password);
 
             radir = pstmt.executeUpdate();
-            conn.close();
         } catch (SQLException e) {
             System.out.println("Error inserting user into table: " + e.getMessage());
         }
@@ -47,7 +46,7 @@ public class UserDB {
                     String mail = rs.getString("email");
                     String pass = rs.getString("password");
                     conn.close();
-                    return new User(uname, mail, pass, userId);
+                    return new User(uname, pass, mail, userId);
                 }
             }
         } catch (SQLException e) {
@@ -72,7 +71,7 @@ public class UserDB {
                     String mail = rs.getString("email");
                     String pass = rs.getString("password");
                     conn.close();
-                    return new User(uname, mail, pass, userId);
+                    return new User(uname, pass, mail, userId);
                 }
             }
         } catch (Exception e) {
@@ -93,7 +92,6 @@ public class UserDB {
             if (rs.next()) {
                 radir = rs.getInt(1);
             }
-            conn.close();
         } catch (SQLException e) {
             System.out.println("Error inserting user into table: " + e.getMessage());
         }
@@ -109,16 +107,14 @@ public class UserDB {
             pstmt.setString(1, newEmail.trim());
             pstmt.setString(2, username.trim());
             pstmt.setString(3, password.trim());
-            //pstmt.executeUpdate();
-            int i = pstmt.executeUpdate();
-            System.out.println("changed: " + i);
-            conn.close();
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println("Error changing email: " + e.getMessage());
             return null;
         }
-        return findUser(username.trim(), password.trim());
+        User upDated = findUser(username.trim(), password.trim());
+        return upDated;
     }
 
     public static User changePassword(String username, String oldPassword, String newPassword) {
@@ -131,7 +127,6 @@ public class UserDB {
             pstmt.setString(2, username.trim());
             pstmt.setString(3, oldPassword.trim());
             pstmt.executeUpdate();
-            conn.close();
 
         } catch (SQLException e) {
             System.out.println("Error changing password: " + e.getMessage());
@@ -152,7 +147,6 @@ public class UserDB {
             if (rs.next()) {
                 pw = rs.getString("password");
             }
-            conn.close();
         } catch (SQLException e) {
             throw new Exception("Error verifying password: " + e.getMessage());
         }
@@ -170,7 +164,6 @@ public class UserDB {
 
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
-            conn.close();
 
         } catch (SQLException e) {
             System.out.println("Error deleting account: " + e.getMessage());

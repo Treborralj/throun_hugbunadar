@@ -60,7 +60,6 @@ public class HotelController implements Initializable {
     private DatePicker fxCheckIn;
     @FXML
     private DatePicker fxCheckOut;
-    private User user;
     private ObservableList<Hotel> hotels = FXCollections.observableArrayList();
     private ObservableList<Booking> bookings = FXCollections.observableArrayList();
     private final String[] places = {"No preference","Reykjavik", "Selfoss", "Akureyri", "Egilsstadir", "Vik","Hvammstangi","Isafjordur"};
@@ -138,6 +137,7 @@ public class HotelController implements Initializable {
 
     public void fxOpenBooking(){
         fxErrorLabel.setText("");
+        User user = userCon.getUser();
         // && fxCheckIn.getValue() != null && fxCheckOut.getValue() != null && fxNumberOfRooms.getText().isEmpty() && fxListView.getSelectionModel().getSelectedItem() == null
         if(user != null) {
             try {
@@ -200,7 +200,7 @@ public class HotelController implements Initializable {
 
             MyBookingsController controller = fxmlLoader.getController();
             BookingDB vinnsla = new BookingDB();
-            int userId = user.getUserID();
+            int userId = userCon.getUser().getUserID();
             List<Booking> listMyBookings = vinnsla.getBookings(userId);
             bookings.setAll(listMyBookings);
             controller.setBookingsList(bookings);

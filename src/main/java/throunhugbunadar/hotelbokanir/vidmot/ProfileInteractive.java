@@ -1,14 +1,24 @@
 package throunhugbunadar.hotelbokanir.vidmot;
 
 import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import throunhugbunadar.hotelbokanir.UserController;
+import throunhugbunadar.hotelbokanir.vinnsla.Booking;
+import throunhugbunadar.hotelbokanir.vinnsla.BookingDB;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -27,7 +37,6 @@ public class ProfileInteractive implements Initializable {
     private Button fxPasswordButton;
     @FXML
     private Label fxAlert;
-
     private UserController userCon = null;
 
     public void setEmail(String email) {
@@ -71,7 +80,6 @@ public class ProfileInteractive implements Initializable {
         }
         String newEmail = fxNewEmail.getText().trim();
         userCon.changeEmail(this, newEmail);
-
     }
 
     public void fxChangePassword(MouseEvent event) {
@@ -111,6 +119,5 @@ public class ProfileInteractive implements Initializable {
                 setAlert("Could not delete account");
             }
         }
-
     }
 }

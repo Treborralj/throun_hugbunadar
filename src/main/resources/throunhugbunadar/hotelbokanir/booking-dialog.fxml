@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<DialogPane prefHeight="255.0" prefWidth="290.0" stylesheets="@../../css/booking-dialog.css" xmlns="http://javafx.com/javafx/17.0.12"  xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.BookingController">
+<DialogPane prefHeight="255.0" prefWidth="290.0" stylesheets="@../../css/booking-dialog.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.BookingController">
    <header>
       <VBox alignment="CENTER" prefHeight="268.0" prefWidth="290.0" spacing="4.0">
          <children>
@@ -19,7 +19,7 @@
             </Label>
             <VBox alignment="CENTER" prefHeight="0.0" prefWidth="290.0" spacing="2.0">
                <children>
-                  <Label id = "NameLabelCSS" text="Name:" />
+                  <Label styleClass="custom-label" text="Name:" />
                   <Label fx:id="fxUsersName" text="Label" />
                </children>
                <VBox.margin>
@@ -28,8 +28,11 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
                <children>
-                  <Label id = "CheckInDateLabelCSS" text="Check-in date:" />
-                  <Label fx:id="fxCheckInDate" text="Label" />
+                  <Label styleClass="custom-label" text="Check-in date:" />
+                  <Label fx:id="fxCheckInDate" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
@@ -37,8 +40,11 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
                <children>
-                  <Label id = "CheckOutDateLabelCSS" text="Check-out date:" />
-                  <Label fx:id="fxCheckOutDate" text="Label" />
+                  <Label styleClass="custom-label" text="Check-out date:" />
+                  <Label fx:id="fxCheckOutDate" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
@@ -46,8 +52,11 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
                <children>
-                  <Label id = "HotelNameLabelCSS" text="Hotel name:" />
-                  <Label fx:id="fxHotelName" text="Label" />
+                  <Label styleClass="custom-label" text="Hotel name:" />
+                  <Label fx:id="fxHotelName" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
@@ -55,8 +64,11 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
                <children>
-                  <Label id = "NumberOfRoomsLabelCSS" text="Number of rooms:" />
-                  <Label fx:id="fxNumberOfRooms" text="Label" />
+                  <Label styleClass="custom-label" text="Number of rooms:" />
+                  <Label fx:id="fxNumberOfRooms" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />
@@ -64,8 +76,14 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="2.0">
                <children>
-                  <Label text="Total price:" />
-                  <Label fx:id="fxTotalPrice" text="Label" />
+                  <Label styleClass="custom-label" text="Total price:">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label fx:id="fxTotalPrice" text="Label">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" top="5.0" />

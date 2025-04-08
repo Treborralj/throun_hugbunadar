@@ -4,13 +4,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import throunhugbunadar.hotelbokanir.vidmot.MyBookingsController;
 import throunhugbunadar.hotelbokanir.vidmot.ProfileInteractive;
 import throunhugbunadar.hotelbokanir.vidmot.SignInInteractive;
+import throunhugbunadar.hotelbokanir.vinnsla.Booking;
+import throunhugbunadar.hotelbokanir.vinnsla.BookingDB;
 import throunhugbunadar.hotelbokanir.vinnsla.User;
 import throunhugbunadar.hotelbokanir.vinnsla.UserDB;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import throunhugbunadar.hotelbokanir.HotelController;
@@ -127,8 +132,8 @@ public class UserController {
             Scene scene = new Scene(fxmlLoader.load(), 400, 600);
             ProfileInteractive p = fxmlLoader.getController();
             p.setUserCon(this);
-            profileStage.setWidth(266);
-            profileStage.setHeight(360);
+            profileStage.setWidth(280);
+            profileStage.setHeight(380);
             profileStage.setTitle("User Profile");
             profileStage.setScene(scene);
             profileStage.setOnCloseRequest(event -> {
@@ -178,4 +183,5 @@ public class UserController {
             p.setAlert("Could not delete account");
         }
     }
+
 }

@@ -50,7 +50,7 @@ public class BookingDB {
         }
     }
 
-    public List<Booking> getBookings(int userID) {
+    public static List<Booking> getBookings(int userID) {
         List<Booking> bookings = new ArrayList<>();
         String sql = "SELECT * FROM bookings WHERE user_id = ?";
 

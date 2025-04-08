@@ -9,12 +9,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import throunhugbunadar.hotelbokanir.UserController;
 import throunhugbunadar.hotelbokanir.vinnsla.Booking;
 import throunhugbunadar.hotelbokanir.vinnsla.BookingDB;
+import throunhugbunadar.hotelbokanir.vinnsla.Hotel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +40,12 @@ public class ProfileInteractive implements Initializable {
     private Button fxPasswordButton;
     @FXML
     private Label fxAlert;
+    @FXML
+    private HBox fxHBox;
+    @FXML
+    private VBox fxVBox;
+    @FXML
+    private ListView<Booking> fxBookingsView;
     private UserController userCon = null;
 
     public void setEmail(String email) {
@@ -56,6 +65,10 @@ public class ProfileInteractive implements Initializable {
         fxPasswordButton.disableProperty().bind(Bindings.createBooleanBinding(
                 () -> fxNewPassword.getText().trim().isEmpty(),
                 fxNewPassword.textProperty()));
+
+        fxVBox.setMinWidth(250);
+        //fxVBox.setMinHeight(380);
+        fxHBox.setMaxHeight(380);
     }
 
     public void redAlert(boolean b) {
@@ -119,5 +132,26 @@ public class ProfileInteractive implements Initializable {
                 setAlert("Could not delete account");
             }
         }
+    }
+
+    public void fxMyBookings() throws Exception {
+        try {
+            ObservableList<Booking> bookings = FXCollections.observableArrayList();
+         int userId = userCon.getUser().getUserID();
+         List<Booking> listMyBookings = BookingDB.getBookings(userId);
+         bookings.addAll(listMyBookings);
+         fxBookingsView.setItems(bookings);
+         Stage stage = (Stage) fxBookingsView.getScene().getWindow();
+         stage.setWidth(800);
+         //stage.setHeight(380);
+         fxHBox.setMinWidth(800);
+
+         fxBookingsView.setMinWidth(800-fxVBox.getWidth() - 20);
+         fxBookingsView.setMaxWidth(800-fxVBox.getWidth() - 20);
+         fxBookingsView.setMaxHeight(fxVBox.getHeight()-40);
+         }
+         catch (Exception e) {
+            e.printStackTrace();
+         }
     }
 }

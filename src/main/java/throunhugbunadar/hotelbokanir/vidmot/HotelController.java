@@ -52,7 +52,6 @@ public class HotelController implements Initializable {
     @FXML
     private DatePicker fxCheckOut;
     private ObservableList<Hotel> hotels = FXCollections.observableArrayList();
-    private ObservableList<Booking> bookings = FXCollections.observableArrayList();
     private final String[] places = {"No preference","Reykjavik", "Selfoss", "Akureyri", "Egilsstadir", "Vik","Hvammstangi","Isafjordur"};
     private final String[] htlNames = {"No preference","Hotel Reykjavik", "Hotel Selfoss", "Hotel Akureyri", "Hotel Egilsstadir", "Hotel Vik","Hotel Hvammstangi","Hotel Hilton","Hotel Isafjordur","Hotel Fron","Hotel Austur","Hotel Hraun","Hotel Nord"};
     private final UserController userCon = new UserController(this);
@@ -190,27 +189,4 @@ public class HotelController implements Initializable {
 
     public void profileButtonDisabled(boolean b) {fxNameLabel.setDisable(b);}
 
-
-    public void fxMyBookings() throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mybookings.fxml"));
-            Pane myBookingPane = fxmlLoader.load();
-
-            MyBookingsController controller = fxmlLoader.getController();
-            BookingDB vinnsla = new BookingDB();
-            int userId = userCon.getUser().getUserID();
-            List<Booking> listMyBookings = vinnsla.getBookings(userId);
-            bookings.setAll(listMyBookings);
-            controller.setBookingsList(bookings);
-
-            Scene scene = new Scene(myBookingPane);
-            Stage stage = new Stage();
-            stage.setTitle("Current Bookings");
-            stage.setScene(scene);
-            stage.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

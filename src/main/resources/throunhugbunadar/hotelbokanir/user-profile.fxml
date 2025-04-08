@@ -77,7 +77,7 @@
             </HBox>
             <HBox prefHeight="62.0" prefWidth="246.0" spacing="30.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#fxMyBookings" text="View bookings" />
+                  <Button mnemonicParsing="false" text="View bookings" />
                   <Button mnemonicParsing="false" onMouseClicked="#fxDeleteAccount" text="Delete account" />
                </children>
                <VBox.margin>

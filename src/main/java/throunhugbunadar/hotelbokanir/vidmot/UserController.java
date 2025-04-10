@@ -132,8 +132,8 @@ public class UserController {
             Scene scene = new Scene(fxmlLoader.load(), 400, 600);
             ProfileInteractive p = fxmlLoader.getController();
             p.setUserCon(this);
-            profileStage.setWidth(280);
-            profileStage.setHeight(380);
+            profileStage.setWidth(625);
+            profileStage.setHeight(400);
             profileStage.setTitle("User Profile");
             profileStage.setScene(scene);
             profileStage.setOnCloseRequest(event -> {
@@ -183,5 +183,4 @@ public class UserController {
             p.setAlert("Could not delete account");
         }
     }
-
 }

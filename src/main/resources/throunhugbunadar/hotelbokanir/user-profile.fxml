@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.ProfileInteractive">
+<AnchorPane stylesheets="@../../css/booking-dialog.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="throunhugbunadar.hotelbokanir.vidmot.ProfileInteractive">
    <children>
-      <HBox fx:id="fxHBox">
+      <HBox fx:id="fxHBox" prefHeight="350.0" prefWidth="579.0">
          <children>
             <VBox fx:id="fxVBox" prefHeight="310.0" prefWidth="258.0">
                <children>
@@ -82,10 +77,10 @@
                         <Label fx:id="fxAlert" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="62.0" prefWidth="246.0" spacing="30.0">
+                  <HBox prefHeight="62.0" prefWidth="246.0" spacing="13.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#fxMyBookings" text="View bookings" />
-                        <Button mnemonicParsing="false" onMouseClicked="#fxDeleteAccount" text="Delete account" />
+                        <Button fx:id="viewBookingButton" mnemonicParsing="false" onAction="#fxMyBookings" text="View bookings" />
+                        <Button fx:id="deleteAcountButton" mnemonicParsing="false" onMouseClicked="#fxDeleteAccount" text="Delete account" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" />
@@ -93,7 +88,7 @@
                   </HBox>
                </children>
             </VBox>
-            <ListView fx:id="fxBookingsView" prefHeight="310.0">
+            <ListView fx:id="fxBookingsView" prefHeight="310.0" prefWidth="279.0">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin></ListView>
